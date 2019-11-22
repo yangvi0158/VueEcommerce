@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css?family=Archivo+Black|Noto+Sans+TC|Open+Sans&display=swap');
+
+*
+    box-sizing: border-box
+    -moz-box-sizing: border-box
+    -webkit-box-sizing: border-box
+    padding: 0
+    margin: 0
+    font-family:  'Open Sans','Noto Sans TC',sans-serif
+*:before,*:after
+    box-sizing: border-box
+    -moz-box-sizing: border-box
+    -webkit-box-sizing: border-box
+
+//border
+$border: solid 1px black
+
+//flexbox
+@mixin flexbox($jc,$ai,$fd:row)
+    display: flex
+    justify-content: $jc
+    align-items: $ai
+    flex-direction: $fd
+
+
+//contentText
+@mixin contentText
+    font-size: .8rem
+    letter-spacing: .05rem
+    text-align: justify
+
+
+@mixin btnText
+    list-style: none
+    text-decoration: none
+    &:hover
+        opacity: .5
+        text-decoration: none
+
+@mixin coffeeBtn
+    background-color: $coffee
+    color: $white
+    +contentText
+    text-align: center
+    border: none
+    &:hover
+        filter: brightness(.8)
+    &:focus
+        outline: none
+//font
+@mixin coolFont
+    font-family: 'Archivo Black'
+
+//a_default css
+@mixin a_css
+    text-decoration: none
+    list-style: none
+    &:hover
+        opacity: .5
+
+
+@mixin input
+    outline: none
+    padding-left: 10px
+    box-sizing: border-box
+    font-size: .5rem
+    letter-spacing: .1rem
+
+
+@mixin title
+    font-size: 1.6rem
+    font-weight: 600
+    letter-spacing: .5rem
+
+
+@mixin btnborder($textWidth,$letterspacing)
+    width: $textWidth
+    //border: $border
+    display: block
+    text-align: center
+    transition: .3s
+    &:hover,&:active
+        letter-spacing: $letterspacing
+        transition: .3s
+        opacity: 1
+    &:after,&:before
+        backface-visibility: hidden
+        border: solid .5px
+        border-color: transparent
+        content: " "
+        display: block
+        margin: 0 auto
+        position: relative
+        transition: all .3s ease-in-out
+        width: 0%
+        bottom: -10px
+    &:before
+        bottom: auto
+        top: -10px
+    &:hover:after,&:hover:before
+        backface-visibility: hidden
+        border-color: $black
+        transition: width .3s ease-in-out
+        width: 100%
+        bottom: -10px
+    &:hover:before
+        bottom: auto
+        top: -10px

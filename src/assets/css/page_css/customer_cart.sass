@@ -1,0 +1,142 @@
+.customerCart_Top
+    width: 50%
+    //border: $border
+    +flexbox(space-between, center, row)
+    .customerCart-process
+        +flexbox(center, center, column)
+        .customerCart-process-circle
+            width: 20px
+            height: 20px
+            background-color: #E0DBCF
+            border-radius: 50%
+            margin-bottom: 10px
+        .customerCart-process-title
+            +contentText
+            color: $coffee
+.customerCart-Main
+    +flexbox(none, flex-start, row)
+    //border: $border
+    padding: 40px 0
+    .customerCart-Left
+        width: 50%
+        //border: $border
+        margin-right: 80px
+        .customerCart-ul
+            width: 100%
+            min-width: 400px
+            padding: 10px
+            background-color: $beige
+            //border: $border
+            margin: 0
+            padding: 0
+            .customerCart-li
+                list-style: none
+                +flexbox(none, center, row)
+                border-bottom: $border
+                border-color: $grey
+                padding: 10px 0 10px 0
+                .customerCart-li-detail
+                    //border: $border
+                    width: 100%
+                    +contentText
+                    .customerCart-li-top
+                        +flexbox(space-between, center, row)
+                        .customerCart-li-title
+                        margin-bottom: 5px
+                        img
+                            width: 15px
+                            cursor: pointer
+                            &:hover
+                                opacity: .4
+
+                    .customerCart-li-bottom
+                        +flexbox(space-between, center, row)
+                        .customerCart-li-num
+                            +flexbox(space-between, center, row)
+                            padding: 5px 10px
+                            border: $border
+                            width: 30%
+                            img 
+                                width: 10px
+                                cursor: pointer
+                                &:hover
+                                    opacity: .4
+                        .customerCart-li-total
+                            padding: 5px 0
+                            //border: $border
+                        
+
+    .customerCart-Right
+        background-color: #F7F6F4
+        width: 50%
+        min-width: 300px
+        //border: $border
+        padding: 50px 10px
+        +flexbox(center,center,column)
+        .customerCart-detail
+            width: 70%
+            +flexbox(center,center,column)
+            margin-bottom: 10%
+            .customerCart-title
+                +title
+            .customerCart-coupon
+                width: 100%
+                +flexbox(center,center,row)
+                margin-bottom: 1%
+                +contentText
+                .customerCart-coupon-input  
+                    width: 80%
+                    border: $border
+                    background-color: transparent
+                    box-shadow: 0
+                    padding: 15px 10px
+                    outline: none
+                .customerCart-coupon-btn
+                    white-space: nowrap
+                    width: 20%
+                    padding: 15px 10px
+                    text-align: center
+                    border: $border
+                    border-left: none
+                    background-color: transparent
+                    outline: none
+                    &:hover
+                        background-color: $coffee
+                        color: white
+
+            .customerCart-total
+                +flexbox(space-between,center,row)
+                //border: $border
+                width: 100%
+                margin-top: 10px
+        .customerCart-form
+            width: 70%
+            .customerCart-title
+                +title
+                text-align: center
+            .customerCart-formMain            
+                .form-control
+                    &:-webkit-autofill
+                        -webkit-box-shadow: 0 0 0px 100px white inset
+                .customerCart-form-submit
+                    width: 100%
+                    +coffeeBtn
+                    padding: 20px 0
+            
+
+.cartOpacity
+    opacity: .3
+
+.emptyCart
+    +contentText
+    text-align: center
+    width: 50%
+    //border: $border
+    padding: 50px 0
+    background-color: #F7F6F4
+    margin: 50px 0
+
+.couponStatus
+    width: 100%
+    +contentText
+    text-align: right

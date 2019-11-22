@@ -1,0 +1,61 @@
+.customerFav_Top
+    //border: $border
+    width: 100%
+    text-align: center
+    .customerFav-Title
+        +title
+        margin: 0
+    .customerFav-subTitle
+        +contentText
+        text-align: center
+.customerFav-Main
+    width: 100%
+    //border: $border
+    +flexbox(center,center,row)
+    .customerFav-Main-ul
+        width: 50%
+        margin-bottom: 15%
+        //border: $border
+        .customerFav-Main-li
+            border-bottom: $border
+            padding: 15px 0
+            list-style: none
+            +flexbox(none,center,row)
+            .customerFav-Main-Left
+                //+flexbox(center,center,row)
+                flex: 3
+                img
+                    width: 120px
+            .customerFav-Main-Right
+                flex: 7
+                +flexbox(space-between,center,row)
+                .customerFav-Main-detail
+                    +contentText
+                    .customerFav-Main-category
+                        color: $grey
+                    .customerFav-Main-NumAndAdd
+                        +flexbox(none,center,row)
+                        height: 30px
+                        margin-top: 15px
+                        .customerFav-Main-num  
+                            border: $border
+                            +flexbox(space-between,center,row)
+                            width: 80px
+                            height: 100%
+                            padding: 0 5px
+                            img
+                                width: 10px
+                                height: 10px
+                        .customerFav-Main-addtoCart
+                            //border: $border
+                            //border-left: 0
+                            height: 100%
+                            padding: 0 15px
+                            cursor: pointer
+                            +contentText
+                            background-color: $coffee
+                            color: white
+                            +flexbox(center,center,row)
+                .customerFav-Main-remove
+                    width: 15px
+                    

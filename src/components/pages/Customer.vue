@@ -1,0 +1,40 @@
+<template>
+  <div class="customer">
+    <NavbarCustomer/>
+    <transition name="slide" mode="out-in">
+      <router-view/>
+    </transition>
+    <Footer/>
+  </div>
+</template>
+
+<script>
+import NavbarCustomer from '../NavbarCustomer';
+import Footer from '../Footer';
+export default {
+  name: 'Customer',
+  components: {
+    NavbarCustomer,
+    Footer,
+  },
+  data(){
+    return{
+      
+    }
+  }
+}
+</script>
+
+<style lang="sass">
+.slide-enter
+  transform: translateX(-10px)
+  opacity: 0
+
+.slide-leave-to
+  transform: translateX(10px)
+  opacity: 0
+
+.slide-enter-active, .slide-leave-active
+  transition: all .4s
+</style>
+

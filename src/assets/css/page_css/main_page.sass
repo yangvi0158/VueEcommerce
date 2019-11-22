@@ -1,0 +1,38 @@
+.admin,.customer
+    width: 100%
+    //border: $border
+    .adminMain,.customerMain
+        margin-top: 5%
+        width: 80%
+        //border: $border
+        +flexbox(center,flex-start,row)
+        .sidebarAdmin,.sidebarCustomer
+            flex: 2
+            //border: $border
+            //margin-top: 90px
+            span
+                +contentText
+                font-weight: 600
+            .sidebar_ul
+                margin-top: 10px
+                min-width: 120px
+                //border: $border
+
+                
+                .sidebar_li
+                    +contentText
+                    list-style: none
+                    margin-bottom: 10px
+                    cursor: pointer
+                    &:hover
+                        transform: translateY(-1px)
+                        transition: .2s
+                    a
+                        color: $grey
+                        text-decoration: none
+                        &:hover
+                            color: $black
+        
+.customerRight
+    width: 100%
+    //border: $border

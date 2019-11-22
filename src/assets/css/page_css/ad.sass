@@ -1,0 +1,146 @@
+.ad
+    width: 100%
+    //border: $border
+    +flexbox(center,center,column)
+    .adTop
+        width: 100%
+        //==border: $border
+
+        +flexbox(space-between,none,row)
+        .adTop_L
+            flex: 5
+            //border: $border
+            +flexbox(flex-start,flex-end,row)
+            .adTop_L_Img
+                width: 80%
+        .adTop_R
+            flex: 5
+            .adTop_R_Text
+                z-index: 10
+                position: absolute
+                padding-top: 5%
+                .adTop_Text
+                    //border: $border
+                    +coolFont
+                    color: $beige
+                    -webkit-text-stroke: 1px black
+                    text-stroke: 1px black
+                    font-size: 4em
+                    line-height: .7em
+                    &:hover
+                        color: black
+            .adTop_R_Rec
+                width: 100%
+                //border: $border
+                z-index: 1
+                .adTop_Rec1
+                    width: 65%
+                    height: 0
+                    padding-bottom: calc(65% - 150px)
+                    background-color: $light-red
+                    margin-top: 20%
+                    margin-left: 15%
+                .adTop_RecGroup
+                    margin-left: 15%
+                    width: 65%
+                    +flexbox(space-between,none,row)
+                    //border: $border
+                    padding-top: 10%
+                    .adTop_Rec2
+                        width: 20%
+                        height: 0
+                        padding-bottom: 20%
+                        background-color: $light-red
+                    .adTop_Rec3
+                        width: 20%
+                        height: 0
+                        padding-bottom: 10%
+                        background-color: $dark-green
+    .adCenter
+        width: 100%
+        background-color: $dark-green
+        //border: $border
+        padding: 10% 0
+        +flexbox(none,none,row)
+        .adCenter_L
+            flex: 5
+            //border: $border
+            +flexbox(center,flex-end,column)
+            padding-right: 5%
+            .adCenter_Text
+                +coolFont
+                color: $white
+                font-size: 1.3em
+                span
+                    +coolFont
+                    font-size: 1.7em
+            .adCenter_Img
+                width: 60%
+                //border: $border
+                +flexbox(none,flex-start,column)
+                .AfterImg_Text
+                    color: $white
+                    background-color: black
+                    padding: 2% 5%
+                
+        .adCenter_R
+            +flexbox(flex-start,flex-start,column)
+            //border: $border
+            flex: 5
+            padding-left: 5%
+            .adCenter_Img
+                width: 60%
+                //border: $border
+                +flexbox(none,flex-END,column)
+                .AfterImg_Text
+                    color: $white
+                    background-color: black
+                    padding: 2% 5%
+        
+    .adBottom
+        width: 100%
+        //border: $border
+        height: 100vh
+        +flexbox(center,center,row)
+        background-color: $light-red
+        .adBottom_L
+            flex: 5
+            height: 100%
+            .adBottom_L_Text
+                //border: $border
+                position: relative
+                top: 20%
+                left: 40%
+                .adBottom_title
+                    +coolFont
+                    color: $black
+                    font-size: 3.2rem
+                    letter-spacing: .2rem
+                    margin-bottom: 10%
+                .adBottom_p
+                    color: $black
+                    font-weight: 800
+                    margin-bottom: 5%
+                    //border: $border
+
+                .adBottom_white
+                    color: $white
+        .adBottom_R
+            flex: 5
+            //border: $border
+            background-color: $beige
+            height: 100%
+            +flexbox(flex-end,flex-end,row)
+            .adBottom_Img
+                width: 100%
+
+
+.adCenter_Img1,.adCenter_Img2
+    width: 100% 
+    -webkit-filter: grayscale(1)
+    &:hover
+        -webkit-filter: grayscale(0)
+        transition: .1s
+        box-shadow: 10px 10px 0px rgba(black, .2)
+.adCenter_Img2:hover
+    box-shadow: -10px 10px 0px rgba(black, .2)

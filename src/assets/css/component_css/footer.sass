@@ -1,0 +1,37 @@
+.footer
+    z-index: 100
+    +flexbox(center,center,column)
+    background-color: $coffee
+    color: $white
+    width: 100%
+    padding: 3% 0
+    .footer_nav
+        +flexbox(space-between,center,row)
+        width: 50%
+        //border: $border
+        list-style: none
+        margin-bottom: 3%
+        .footer_navItem
+            +contentText
+            a
+                color: $white
+                +a_css
+                    
+    .footer_social
+        +flexbox(space-between,center,row)
+        width: 10%
+        //border: $border
+        margin-bottom: 3%
+        .socialIcon
+            width: 30px
+            +a_css
+            &:hover
+                transform: scale(1.1)
+                transition: .3s
+
+    .footer_copyright
+        +contentText
+        //border: $border
+        text-align: center
+        font-weight: lighter
+

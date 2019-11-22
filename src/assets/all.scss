@@ -1,0 +1,19 @@
+@import "~bootstrap/scss/_functions";
+@import "./css/_variables";
+@import "~bootstrap/scss/bootstrap";
+
+@import "./css/basic";
+
+@import "./css/page_css/dashboard";
+@import "./css/page_css/ad";
+@import "./css/page_css/login";
+@import "./css/page_css/main_page";
+@import "./css/page_css/admin";
+@import "./css/page_css/customer";
+@import "./css/page_css/customer_cart";
+@import "./css/page_css/customer_order";
+@import "./css/page_css/customer_favorite";
+
+@import "./css/component_css/navbar";
+@import "./css/component_css/footer";
+@import "./css/component_css/modal";

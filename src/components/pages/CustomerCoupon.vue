@@ -1,0 +1,197 @@
+<template>
+  <div class="customerMain">
+    <SidebarCustomer/>
+
+    <!--商品列表-->
+    <div class="couponMain">
+        <div class="couponMain_Left">
+          <img src="@/assets/img/coupon.png">
+        </div>
+        <div class="couponMain_Right">
+          <div class="couponMain_Right_Top">
+            <div class="couponMain_Rec redRec"></div>
+            <p class="couponMain-Title">歡慶聖誕</p>
+            <div class="couponMain_Rec greenRec"></div>
+          </div>
+          <p class="coupon_description">
+          PLAY STUFF 與您一同慶祝聖誕節！<br>
+          複製以下代碼，獲得優惠券，<br>
+          享全館不限金額「8折」優惠。<br>
+          </p>
+          <div class="couponMain_Right_Bottom">
+            <span class="copy_description">點擊代碼</span>
+            <div class="copy">
+              <p class="copy_btn" id="Coupon_Code" 
+              ref="copy" 
+              data-clipboard-action="copy" 
+              data-clipboard-target="#Coupon_Code" 
+              @click="CopyCouponCode">
+                {{ couponCode }}
+              </p>
+              <span class="copied" v-if="!isCopied"></span>
+              <span class="copied" v-if="isCopied">已複製</span>
+            </div>
+          </div>
+        </div>
+    </div>
+    
+
+  </div>
+</template>
+
+<script>
+import SidebarCustomer from '../SidebarCustomer';
+import Footer from '../Footer';
+import $ from 'jquery';
+
+export default {
+  name: 'CustomerCoupon',
+  components: {
+    SidebarCustomer,
+    Footer,
+  },
+  data(){
+    return{
+      couponCode: 'CHRISTMAS',
+      copyBtn: null,
+      isCopied: false,
+    }
+  },
+  methods:{
+    CopyCouponCode(){
+      let vm = this;
+      let clipboard = vm.copyBtn;
+      clipboard.on('success', function() {
+          console.log('複製成功');
+          vm.isCopied = true;
+      });
+      clipboard.on('error', function() {
+          console.log('複製失敗');
+      });
+    },
+  },
+  computed:{
+
+  },
+  mounted() {
+    this.copyBtn = new this.clipboard(this.$refs.copy);
+  },
+}
+</script>
+
+<style>
+@import url(http://weloveiconfonts.com/api/?family=entypo);
+@font-face {
+  font-family: 'entypo';
+  src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-90/entypo.woff') format('woff');
+}
+
+.entypo-heart:before{
+  content:"\2665";
+}
+
+[class*="entypo-"]:before {
+  font-family: 'entypo', sans-serif;
+  color: grey;
+  opacity: .5;
+  position: absolute;
+  right: 0;
+}
+
+.couponMain{
+  flex: 5;
+  background-color: #F7F6F3;
+  display: flex;
+  flex-direction: row;
+  height: 330px;
+  margin-bottom: 200px;
+}
+.couponMain_Left,.couponMain_Right{
+  height: 100%;
+
+}
+.couponMain_Right{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-right: 50px;
+}
+.couponMain_Left img{
+  height: 100%;
+  opacity: .8;
+}
+
+.couponMain_Right_Top,
+.coupon_description,
+.couponMain_Right_Bottom{
+  width:65%;
+  min-width: 200px;
+  margin-bottom: 30px;
+  color: #494948;
+}
+.couponMain_Right_Top{
+  display: flex;
+  flex-direction: row;;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 15%;
+  height: 30px;
+
+}
+.couponMain-Title{
+  white-space: nowrap;
+  font-size: 1.3rem;
+  margin: 0;
+  letter-spacing: .4rem;
+  display: block;
+}
+.couponMain_Rec{
+  width: 25%;
+  height: 100%;
+}
+.redRec{
+  background-color: #F16D6D;
+}
+.greenRec{
+  background-color: #86AE5E;
+}
+.coupon_description{
+  letter-spacing: .15rem;
+  font-size: .9rem;
+  white-space: nowrap;
+
+}
+.couponMain_Right_Bottom{
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.copy_description{
+
+}
+.copy{
+  width: 65%;
+  text-align: center;
+}
+.copied{
+  border: solid 1px transparent;
+  font-size: .4rem;
+  opacity: .3;
+  height: 10px;
+}
+.copy_btn{
+  border: dashed 1px black;
+  padding: 5px 0;
+  text-align: center;
+  width: 100%;
+  opacity: .3;
+  margin: 0;
+}
+.copy_btn:hover{
+  opacity: 1;
+  transition: .2s;
+}
+
+</style>

@@ -1,0 +1,47 @@
+.adminMainContent
+    flex: 7
+    //border: $border
+    +flexbox(flex-start,flex-end,column)
+    .adminMainContent-Top
+        //border: $border
+        width: 100%
+        +flexbox(space-between, center, row)
+        .adminBreadcrumbs
+            +contentText
+            font-size: 1rem
+        .adminBtn
+            +coffeeBtn
+            height: 40px
+            width: 150px
+            +contentText
+            text-align: center
+            letter-spacing: .5rem
+            border-radius: 3px
+    .tableClass
+        //border: $border
+        width: 100%
+        margin-top: 50px
+        .tableHead
+            padding: 50px
+            color: $white
+            background-color: $coffee
+            +contentText
+            font-weight: 400
+            .tableHead_th
+                font-weight: 400
+                //border: $border
+        .tableBody
+            //border: $border
+            +contentText
+            .tableRow
+                border-bottom: $border
+                border-color: $grey
+                height: 60px
+                
+
+.paginationNav
+    width: 100%
+    margin: 8% 0
+    +contentText
+    //border: $border
+    +flexbox(center,center,row)

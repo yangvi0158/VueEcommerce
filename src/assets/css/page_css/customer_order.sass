@@ -1,0 +1,49 @@
+.customerOrder_Top
+    width: 50%
+    //border: $border
+    margin-bottom: 10%
+    +flexbox(space-between, center, row)
+    .customerCart-process
+        +flexbox(center, center, column)
+        .customerCart-process-circle
+            width: 20px
+            height: 20px
+            background-color: #E0DBCF
+            border-radius: 50%
+            margin-bottom: 10px
+        .customerCart-process-title
+            +contentText
+            color: $coffee
+.customerOrder-Main
+    +flexbox(center, center, column)
+    width: 100%
+    .customerOrder-form
+        +flexbox(center, center, column)
+        //border: $border
+        
+        .table
+            +contentText
+            
+        
+            .customerOrder-border
+                border-bottom: solid 1px #DAD8D3
+        .customerOrder-pay
+            .customerOrder-payBtn
+                border: none
+                +coffeeBtn
+
+                padding: 20px 100px
+
+.tableTitle
+    font-size: 1rem 
+    //border: $border
+    width: 100%
+    text-align: center
+
+.payRemark
+    +contentText
+    //border: $border
+    width: 100%
+
+.orderStatus
+    background-color: #646159 !important
