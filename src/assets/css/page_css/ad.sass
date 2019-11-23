@@ -91,7 +91,7 @@
             .adCenter_Img
                 width: 60%
                 //border: $border
-                +flexbox(none,flex-END,column)
+                +flexbox(none,flex-end,column)
                 .AfterImg_Text
                     color: $white
                     background-color: black
@@ -144,3 +144,187 @@
         box-shadow: 10px 10px 0px rgba(black, .2)
 .adCenter_Img2:hover
     box-shadow: -10px 10px 0px rgba(black, .2)
+
+
+
+
+
+//@media only screen and (min-width: 1480px) 
+	.nav
+        //border: $border
+
+@media screen and (max-width: 950px) 
+    .adTop
+        .adTop_L
+            .adTop_L_Img
+                width: 90% !important
+        .adTop_R
+            .adTop_R_Text
+                padding-top: 5% !important
+                .adTop_Text
+                    font-size: 3.5em !important
+            .adTop_R_Rec
+                .adTop_Rec1
+                    width: 80% !important
+                    padding-bottom: calc(85% - 150px) !important
+                .adTop_RecGroup
+                    padding-top: 10%
+                    .adTop_Rec2
+                        width: 20%
+                        height: 0
+                        padding-bottom: 20%
+                    .adTop_Rec3
+                        width: 20%
+                        height: 0
+                        padding-bottom: 10%
+    .adCenter
+        padding: 5% 0
+        .adCenter_L
+            padding-right: 5%
+            .adCenter_Text
+                font-size: 1.1rem !important
+                span
+                    font-size: 1.75em !important
+            .adCenter_Img
+                width: 75% !important
+                .AfterImg_Text
+                    padding: 2% 5%
+                
+        .adCenter_R
+            .adCenter_Img
+                width: 75% !important
+                .AfterImg_Text
+                    padding: 2% 5%
+        
+    .adBottom
+        height: 90vh !important
+        .adBottom_L
+            width: 30% !important
+            .adBottom_L_Text
+                top: 20% !important
+                left: 20% !important
+                .adBottom_title
+                    font-size: 3rem !important
+                    letter-spacing: .2rem
+                    margin-bottom: 10%
+                .adBottom_p
+                    margin-bottom: 5%
+                    //border: $border
+        .adBottom_R
+            width: 70% !important
+
+
+
+@media screen and (max-width: 690px) 
+    .adTop
+        .adTop_L
+            .adTop_L_Img
+                width: 90% !important
+        .adTop_R
+            .adTop_R_Text
+                padding-top: 5% !important
+                .adTop_Text
+                    font-size: 2.5rem !important
+            .adTop_R_Rec
+                .adTop_Rec1
+                    width: 80% !important
+                    padding-bottom: calc(85% - 150px) !important
+                .adTop_RecGroup
+                    padding-top: 10%
+                    .adTop_Rec2
+                        width: 20%
+                        height: 0
+                        padding-bottom: 20%
+                    .adTop_Rec3
+                        width: 20%
+                        height: 0
+                        padding-bottom: 10%
+    .adCenter
+        padding: 5% 0
+        .adCenter_L
+            padding-right: 5%
+            .adCenter_Text
+                font-size: .85rem !important
+                span
+                    font-size: 1.75em !important
+            .adCenter_Img
+                width: 75% !important
+                .AfterImg_Text
+                    padding: 2% 5%
+                
+        .adCenter_R
+            .adCenter_Img
+                width: 75% !important
+                .AfterImg_Text
+                    padding: 2% 5%
+        
+    .adBottom
+        height: 90vh !important
+        .adBottom_L
+            width: 25% !important
+            .adBottom_L_Text
+                top: 10% !important
+                left: 20% !important
+                white-space: nowrap !important
+                .adBottom_title
+                    font-size: 2.5rem !important
+                .adBottom_p
+
+        .adBottom_R
+            width: 75% !important
+
+
+@media screen and (max-width: 500px) 
+    .adTop
+        .adTop_L
+            .adTop_L_Img
+        .adTop_R
+            .adTop_R_Text
+                //padding-top: 5% !important
+                .adTop_Text
+                    font-size: 2rem !important
+            .adTop_R_Rec
+                .adTop_Rec1
+                    width: 80% !important
+                    padding-bottom: calc(80% - 100px) !important
+                .adTop_RecGroup
+                    //padding-top: 10%
+                    .adTop_Rec2
+                    .adTop_Rec3
+    .adCenter
+        //padding: 5% 0
+        .adCenter_L
+            //padding-right: 5%
+            .adCenter_Text
+                font-size: .6rem !important
+                span
+                    font-size: 1.75em !important
+            .adCenter_Img
+                width: 75% !important
+                .AfterImg_Text
+                    display: none !important
+                
+        .adCenter_R
+            .adCenter_Img
+                width: 75% !important
+                .AfterImg_Text
+
+                    display: none !important
+        
+    .adBottom
+        height: 90vh !important
+        .adBottom_L
+            width: 25% !important
+            .adBottom_L_Text
+                top: 10% !important
+                left: 20% !important
+                white-space: nowrap !important
+                .adBottom_title
+                    font-size: 2.5rem !important
+                .adBottom_p
+
+        .adBottom_R
+            width: 75% !important
+
+    .adCenter_Img1,.adCenter_Img2
+        -webkit-filter: none !important

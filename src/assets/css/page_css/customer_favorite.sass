@@ -9,6 +9,8 @@
     .customerFav-subTitle
         +contentText
         text-align: center
+    .emptyCart
+        width: 100%
 .customerFav-Main
     width: 100%
     //border: $border
@@ -76,3 +78,38 @@
     100%
         opacity: 0
         transform: translateX(50px)
+
+@media screen and (max-width: 950px) 
+    .customerFav-Title
+        margin-bottom: 20px !important 
+    .customerFav-subTitle
+    .emptyCart
+    .customerFav-Main
+        .customerFav-Main-ul
+            width: 75% !important
+            .customerFav-Main-li
+                padding: 30px 0  !important
+                .customerFav-Main-Left
+                    img
+                        width: 150px !important
+@media screen and (max-width: 690px) 
+    .customerFav-Title
+        margin-bottom: 20px !important 
+    .customerFav-subTitle
+    .emptyCart
+    .customerFav-Main
+        .customerFav-Main-ul
+            width: 100% !important
+            .customerFav-Main-li
+                .customerFav-Main-Left
+                    img
+                .customerFav-Main-Right
+
+                    .customerFav-Main-detail
+                        +contentText
+                        .customerFav-Main-category
+                        .customerFav-Main-NumAndAdd
+                            .customerFav-Main-num  
+                            .customerFav-Main-outOfStock
+                            .customerFav-Main-addtoCart
+                    .customerFav-Main-remove

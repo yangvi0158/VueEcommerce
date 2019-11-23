@@ -1,6 +1,6 @@
 .admin,.customer
     width: 100%
-    //border: $border
+
     .adminMain,.customerMain
         margin-top: 5%
         width: 80%
@@ -36,3 +36,67 @@
 .customerRight
     width: 100%
     //border: $border
+
+.smallSizeUse
+    display: none
+
+//@media only screen and (min-width: 1480px) 
+	.nav
+        //border: $border
+
+//@media screen and (max-width: 950px) 
+
+@media screen and (max-width: 690px) 
+	.admin,.customer
+    width: 100%
+    //border: $border
+    .adminMain,.customerMain
+        margin-top: 2% !important
+        //border: $border
+        +flexbox(center,center,column)
+        .sidebarAdmin,.sidebarCustomer
+            min-width: 120px !important
+            border: $border
+            border-top: 0
+            width: 100%
+            padding-top: 20px
+            padding-left: 20px
+            margin-bottom: 20px
+            span
+                display: block !important
+            .sidebar_ul
+                width: 100% !important
+            
+
+                .sidebar_li
+
+    .bigSizeUse
+        display: none
+    
+    .allsideBar
+        //border: $border 
+        border-color: red
+        width: 100%
+    .smallSizeUse
+        display: block
+        //border: $border
+        +flexbox(center,center,column)
+        width: 100%
+        margin-bottom: 30px   
+        #hambar
+            width: 100%
+            height: 40px
+            border: $border
+            +flexbox(center,center,row)
+            cursor: pointer
+            user-select: none
+            &:hover
+                background-color: rgba(black,.1)
+            img 
+                width: 30px
+
+
+
+
+
+//@media screen and (max-width: 500px) 

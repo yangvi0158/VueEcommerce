@@ -70,8 +70,8 @@
                       <p class="productModal-price">NT{{product.price|currency}}</p>
                     </div>
                     <div class="productModal_Right_Center">
-                      <p class="productModal-ingredient">商品材料/成分：{{product.ingredient}}</p>
-                      <p class="productModal-size">商品規格：{{product.size}}</p>
+                      <div class="productModal-ingredient">商品材料/成分：{{product.ingredient}}</div>
+                      <div class="productModal-size">商品規格：{{product.size}}</div>
                     </div>
                     <div class="productModal_Right_Bottom">
                       <div class="productModal-num">

@@ -34,7 +34,7 @@
                     <tr class="customerOrder-border" v-for="item in order.products" :key="item.id">
                         <td><img :src="item.product.imageUrl" style="width: 60px"></td>
                         <td style="min-width: 200px">{{ item.product.title }}</td>
-                        <td width="100">{{ item.qty }}</td>
+                        <td>{{ item.qty }}</td>
                         <td width="100">NT{{ Math.round(item.final_total)|currency}}</td>
                     </tr>
                 </tbody>

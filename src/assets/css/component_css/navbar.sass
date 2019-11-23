@@ -19,17 +19,13 @@
              //border: $border
              margin-right: 50px
              transform: translateX(-15px)
-             +btnborder(80px,.4rem)
-             
-                
-             
+             +btnborder(80px,.4rem)           
     .navCenter
         flex: 2
         //border: $border
         +flexbox(center,center,row)
         .navbarImg
-            height: 30px
-            
+            height: 30px          
     .navRight
         flex: 4
         //border: $border
@@ -58,7 +54,6 @@
                 &:hover
                     text-decoration: none !important
                     border: none !important 
-
         .navbarImg_nomMargin
             margin: 0
         .search
@@ -75,8 +70,6 @@
         .searching
             width: 100px !important
             outline: none !important
-
-
 
 .dropdown-flex
     +flexbox(space-around,center,row)
@@ -108,7 +101,6 @@
             letter-spacing: .05rem
             margin-bottom: 20px
 
-
 .scrollable-menu 
     height: auto
     max-height: 450px
@@ -122,3 +114,26 @@
         border-radius: 3px
         background-color: $coffee
 
+
+
+@media only screen and (min-width: 1480px) 
+	.nav
+        //border: $border
+	
+
+@media screen and (max-width: 760px) 
+	.nav
+        +flexbox(center,center,row)
+        height: 80px
+        .navLeft
+            //border: $border
+            .navLeft_btn
+                margin: 0
+                transform: translateX(0px)
+        .navCenter
+            //border: $border
+        .navRight
+            .navbarImg_nomMargin 
+
+
+//@media screen and (max-width: 500px) 
