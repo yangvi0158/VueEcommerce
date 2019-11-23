@@ -1,12 +1,23 @@
 <template>
   <div class="customerMain" style="flex-direction: column">
+    <!--loading-->
+    <loading 
+      :active.sync="isLoading"
+      color="#646159"
+      height="50"
+      width="50"
+    ></loading>   
     <div class="customerFav_Top">
       <p class="customerFav-Title">慾望清單</p>
       <p class="customerFav-subTitle">{{favProducts.length}} Items</p>
+      <p v-if="!favProducts[0]" class="emptyCart">咦，慾望清單沒有商品噢！</p>
     </div>
     <div class="customerFav-Main">
       <ul class="customerFav-Main-ul">
-        <li class="customerFav-Main-li" v-for="item in favProducts" :key="item.id" :class="{'disabled': true}">
+        <li class="customerFav-Main-li" 
+        v-for="item in favProducts" 
+        :key="item.id" 
+        :class="{'disabled': true,'deleteFavItem': deleteItem === item.id}">
           <div class="customerFav-Main-Left">
             <img :src="item.imageUrl">
           </div>
@@ -22,7 +33,7 @@
                   <img :src="addImg" @click="countNum(2)">
                 </div-->
                 <div v-if="item.is_enabled" class="customerFav-Main-addtoCart" @click="addtoCart(item.id, 1),deleteFav(item)">加入購物車</div>
-                <div v-else class="customerFav-Main-addtoCart" @click="deleteFav(item)">缺貨，到貨提醒我</div>
+                <div v-else class="customerFav-Main-outOfStock">目前缺貨中</div>
               </div>
             </div>
             <img class="customerFav-Main-remove" :src="crossImg" @click="deleteFav(item)">
@@ -47,6 +58,8 @@ export default {
       isAddCart: '',
       product: {},
       newFavProducts: [],
+      isLoading: false,
+      deleteItem: '',
     }
   },
   methods:{
@@ -55,8 +68,11 @@ export default {
       let arrIndex = vm.favProducts.findIndex(function(value){
         return value.id === item.id;
       })
-      vm.favProducts.splice(arrIndex,1);
-      this.$bus.$emit('favToNav',vm.favProducts);
+      vm.deleteItem = item.id;
+      window.setTimeout(function(){
+        vm.favProducts.splice(arrIndex,1);
+        this.$bus.$emit('favToNav',vm.favProducts);
+      }, 1000);
     },
     // getProduct(id){
     //     const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/product/${id}`;
@@ -69,7 +85,7 @@ export default {
     addtoCart(id, qty=1){
         const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`;
         const vm = this;
-        //vm.isLoading = true;
+        vm.isLoading = true;
         const cart = {
 	        product_id: id,
 	        qty,
@@ -97,13 +113,14 @@ export default {
   },
   created(){
     const vm = this;
+    vm.isLoading = true;
     vm.$bus.$on('updateFavorite:fav', (item)=>{
       this.favProducts = item;
     });
-    this.favProducts = this.favProducts.forEach(function(item,index,arr){
-      arr[index].num = 1;
-    });
-    console.log('arr',arr);
+  },
+  mounted(){
+    const vm = this;
+    vm.isLoading = false;
   },
   beforeDestory() {
    //this.$bus.$off('updateFavorite');

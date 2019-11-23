@@ -2,7 +2,12 @@
     <!--產品列表-->  
     <div class="adminMainContent">
         <!--loading-->
-        <loading :active.sync="isLoading"></loading>   
+        <loading 
+          :active.sync="isLoading"
+          color="#646159"
+          height="50"
+          width="50"
+        ></loading>   
         <div class="adminMainContent-Top">
             <span class="adminBreadcrumbs">產品列表</span>
             <button class="adminBtn" @click="openModal(true)">建立新商品</button>

@@ -1,7 +1,12 @@
 <template>
   <div class="adminMainContent">
         <!--loading-->
-        <loading :active.sync="isLoading"></loading>   
+        <loading 
+          :active.sync="isLoading"
+          color="#646159"
+          height="50"
+          width="50"
+        ></loading> 
         <div class="adminMainContent-Top">
             <span class="adminBreadcrumbs">訂單列表</span>
         </div>

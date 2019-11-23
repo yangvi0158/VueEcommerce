@@ -1,5 +1,12 @@
 <template>
   <div class="customerMain" style="flex-direction: column; justify-content: center; align-items: center;">
+    <!--loading-->
+    <loading 
+      :active.sync="isLoading"
+      color="#646159"
+      height="50"
+      width="50"
+    ></loading>  
     <div class="customerCart_Top">
       <div class="customerCart-process">
         <div class="customerCart-process-circle" style="background-color: #646159"></div>
@@ -116,6 +123,7 @@ export default {
       cutImg: require("@/assets/img/cart/sub.png"),
       cartProducts: [],
       isDelete: false,
+      isLoading: false,
       tempProduct: {},
       coupon_code: '',
       couponAdd: false,
@@ -135,8 +143,10 @@ export default {
     getCart(){
         const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`;
         const vm = this;
+        vm.isLoading = true;
         this.$http.get(api).then((res) => {
             vm.cartProducts = res.data.data;
+            vm.isLoading = false;
             console.log('getCarts!',res.data);
         });
     },

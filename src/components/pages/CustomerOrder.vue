@@ -1,5 +1,12 @@
 <template>
   <div class="customerMain" style="flex-direction: column; justify-content: center; align-items: center;">
+    <!--loading-->
+    <loading 
+      :active.sync="isLoading"
+      color="#646159"
+      height="50"
+      width="50"
+    ></loading> 
     <div class="customerOrder_Top">
       <div class="customerCart-process">
         <div class="customerCart-process-circle"></div>
@@ -95,6 +102,7 @@ export default {
       cutImg: require("@/assets/img/cart/sub.png"),
       cartProducts: [],
       isDelete: false,
+      isLoading: false,
       tempProduct: {},
       orderId: '',
       order: {
@@ -105,10 +113,12 @@ export default {
   methods:{
     getOrder(){
         const vm = this;
+        vm.isLoading = true;
         console.log('getOrder')
         const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/order/${vm.orderId}`;
         this.$http.get(api).then((res) => {
             vm.order = res.data.order;
+            vm.isLoading = false;
             console.log('取得訂單資料',res);
             this.$bus.$emit('update:cart');
         });

@@ -13,6 +13,7 @@ import 'bootstrap';
 
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
+Vue.component('Loading', Loading);
 
 import currencyFilter from './filters/currency';
 
@@ -27,7 +28,6 @@ Vue.use(VuePhotoZoomPro);
 
 Vue.filter('currency', currencyFilter);
 
-Vue.component('Loading', Loading);
 
 //設置為 false 以阻止 vue 在啟動時生成生產提示
 Vue.config.productionTip = false;

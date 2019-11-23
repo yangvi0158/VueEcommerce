@@ -1,9 +1,14 @@
 <template>
   <div class="customerMain" @click="showSortByul = false">
     <SidebarCustomer/>
-
+    <!--loading-->
+    <loading 
+      :active.sync="isLoading"
+      color="#646159"
+      height="50"
+      width="50"
+    ></loading>
     <!--商品列表-->
-
     <div class="customerRight">
         <div class="customerMainContent-Top">
             <span v-if="filteredProducts[0]">搜尋關於 "{{searchKeyword}}" 的結果</span>
@@ -82,10 +87,11 @@
                         <span :value="num" v-model="product.num">{{product.num}}</span>
                         <img :src="addImg"  @click="countNum(2)">
                       </div>
-                      <button class="productModal-addtoCart" @click="addtoCart(product.id, product.num)">
-                      <span v-if="isAddCart === product.id">已加入購物車&nbsp;</span>
-                      <span v-else>ADD TO CART&nbsp;</span>
-                      <i  v-if="isLoading" class="fas fa-spinner fa-spin"></i>
+                      <button class="productModal-addtoCart" @click="addtoCart(product.id, product.num)"
+                      :disabled="isLoading" :class="{'productModal-addtoCart-disabled':isLoading}">
+                        <span v-if="isAddCart === product.id">已加入購物車&nbsp;</span>
+                        <span v-else>ADD TO CART&nbsp;</span>
+                        <i  v-if="isLoading" class="fas fa-spinner fa-spin"></i>
                       </button>
                     </div>
                   </div>
@@ -132,10 +138,9 @@ export default {
     getProducts(){
         const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/products/all`;
         const vm = this;
-        //vm.isLoading = true;
+        vm.isLoading = true;
         this.$http.get(api).then((res) => {
-            //vm.isLoading = false;
-            //console.log(res.data);
+            vm.isLoading = false;
             vm.allProducts = res.data.products;
             vm.getPagination = res.data.pagination;
             console.log('拿取商品列表',res.data);
@@ -145,10 +150,7 @@ export default {
     getProduct(id){
         const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/product/${id}`;
         const vm = this;
-        //vm.isLoading = true;
         this.$http.get(api).then((res) => {
-            //vm.isLoading = false;
-            //console.log(res.data);
             vm.product = res.data.product;
             vm.product.num = 1;
             console.log('拿取單一商品細節',res.data);
@@ -166,11 +168,8 @@ export default {
 	        product_id: id,
 	        qty,
         };
-        //vm.isLoading = true;
         this.$http.post(api, { data: cart }).then((res) => {
             vm.isLoading = false;
-            //vm.isLoading = false;
-            //console.log(res.data);
             console.log('加至購物車',res.data);
             if(res.data.success){
               console.log('加至購物車成功',res.data);

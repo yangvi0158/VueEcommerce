@@ -1,9 +1,14 @@
 <template>
   <div class="customerMain" @click="showSortByul = false">
     <SidebarCustomer/>
-
+    <!--loading-->
+    <loading 
+      :active.sync="isLoading"
+      color="#646159"
+      height="50"
+      width="50"
+    ></loading>
     <!--商品列表-->
-
     <div class="customerRight">
         <div class="customerMainContent-Top">
             <span class="customerBreadcrumbs">{{nowPage}}</span>
@@ -81,7 +86,8 @@
                         <span :value="num" v-model="product.num">{{product.num}}</span>
                         <img :src="addImg"  @click="countNum(2)">
                       </div>
-                      <button class="productModal-addtoCart" @click="addtoCart(product.id, product.num)">
+                      <button class="productModal-addtoCart" @click="addtoCart(product.id, product.num)"
+                      :disabled="isLoading" :class="{'productModal-addtoCart-disabled':isLoading}">
                       <span v-if="isAddCart === product.id">已加入購物車&nbsp;</span>
                       <span v-else>ADD TO CART&nbsp;</span>
                       <i  v-if="isLoading" class="fas fa-spinner fa-spin"></i>
@@ -130,10 +136,9 @@ export default {
     getProducts(){
         const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/products/all`;
         const vm = this;
-        //vm.isLoading = true;
+        vm.isLoading = true;
         this.$http.get(api).then((res) => {
-            //vm.isLoading = false;
-            //console.log(res.data);
+            vm.isLoading = false;
             vm.allProducts = res.data.products;
             vm.getPagination = res.data.pagination;
             console.log('拿取商品列表',res.data);
