@@ -1,13 +1,6 @@
 <template>
   <div class="customerMain" @click="showSortByul = false">
     <SidebarCustomer/>
-    <!--loading-->
-    <loading 
-      :active.sync="isLoading"
-      color="#646159"
-      height="50"
-      width="50"
-    ></loading>
     <!--商品列表-->
     <div class="customerRight">
         <div class="customerMainContent-Top">
@@ -136,9 +129,9 @@ export default {
     getProducts(){
         const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/products/all`;
         const vm = this;
-        vm.isLoading = true;
+        //vm.isLoading = true;
         this.$http.get(api).then((res) => {
-            vm.isLoading = false;
+            //vm.isLoading = false;
             vm.allProducts = res.data.products;
             vm.getPagination = res.data.pagination;
             console.log('拿取商品列表',res.data);

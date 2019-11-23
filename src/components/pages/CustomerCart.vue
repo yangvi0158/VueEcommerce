@@ -25,8 +25,9 @@
       <div class="customerCart-Left">
         <ul class="customerCart-ul">
           <li class="customerCart-li" v-for="item in cartProducts.carts">
-            <img :src="item.product.imageUrl" width="30%" :class="{'cartOpacity': isDelete === item.id}">
-            <div class="customerCart-li-detail" :class="{'cartOpacity': isDelete === item.id}">
+            <img :src="item.product.imageUrl" width="30%" 
+            :class="{'disabled': true,'deleteFavItem': deleteItem === item.id}">
+            <div class="customerCart-li-detail" :class="{'disabled': true,'deleteFavItem': deleteItem === item.id}">
               <div class="customerCart-li-top">
                 <div class="customerCart-li-title">{{item.product.title}}</div>
                 <img :src="crossImg" @click="deleteCartItem(item.id)">
@@ -37,6 +38,20 @@
                 <div class="customerCart-li-total">NT{{item.total|currency}}</div>
               </div>
             </div>
+
+            <!--img :src="item.product.imageUrl" width="30%" :class="{'cartOpacity': isDelete === item.id}">
+            <div class="customerCart-li-detail" :class="{'cartOpacity': isDelete === item.id}">
+              <div class="customerCart-li-top">
+                <div class="customerCart-li-title">{{item.product.title}}</div>
+                <img :src="crossImg" @click="deleteCartItem(item.id)">
+              </div>
+              NT{{item.product.price|currency}}
+              <div class="customerCart-li-bottom">
+                <span>數量: {{item.qty}}個</span>
+                <div class="customerCart-li-total">NT{{item.total|currency}}</div>
+              </div>
+            </div-->
+
           </li>
         </ul>
       </div>
@@ -122,12 +137,12 @@ export default {
       addImg: require("@/assets/img/cart/add.png"),
       cutImg: require("@/assets/img/cart/sub.png"),
       cartProducts: [],
-      isDelete: false,
       isLoading: false,
       tempProduct: {},
       coupon_code: '',
       couponAdd: false,
       couponAddSuccess: '',
+      deleteItem: '',
       form: {
         user: {
           name: '',
@@ -153,11 +168,11 @@ export default {
     deleteCartItem(id){
         const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart/${id}`;
         const vm = this;
-        vm.isDelete = id;
-        this.$http.delete(api).then((res) => {
-            console.log('delete一筆商品',res.data);
-            vm.getCart();
-            this.$bus.$emit('update:cart');
+        vm.deleteItem = id;
+        vm.$http.delete(api).then((res) => {
+          console.log('delete一筆商品',res.data);
+          vm.getCart();
+          vm.$bus.$emit('update:cart');
         });
     },
     addCoupon(){

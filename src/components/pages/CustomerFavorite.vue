@@ -16,12 +16,11 @@
       <ul class="customerFav-Main-ul">
         <li class="customerFav-Main-li" 
         v-for="item in favProducts" 
-        :key="item.id" 
-        :class="{'disabled': true,'deleteFavItem': deleteItem === item.id}">
-          <div class="customerFav-Main-Left">
+        :key="item.id" >
+          <div class="customerFav-Main-Left" :class="{'disabled': true,'deleteFavItem': deleteItem === item.id}">
             <img :src="item.imageUrl">
           </div>
-          <div class="customerFav-Main-Right">
+          <div class="customerFav-Main-Right" :class="{'disabled': true,'deleteFavItem': deleteItem === item.id}">
             <div class="customerFav-Main-detail">
               <div class="customerFav-Main-category">{{item.category}}</div>
               <br>{{item.title}}
@@ -32,8 +31,13 @@
                       <span :value="num" v-model="item.num">{{item.num}}</span>
                   <img :src="addImg" @click="countNum(2)">
                 </div-->
-                <div v-if="item.is_enabled" class="customerFav-Main-addtoCart" @click="addtoCart(item.id, 1),deleteFav(item)">加入購物車</div>
+
+                <div v-if="item.is_enabled" class="customerFav-Main-addtoCart" @click="addtoCart(item.id, 1)">
+                  加入購物車
+                  <i  v-if="isAddCart === item.id" class="fas fa-spinner fa-spin"></i>
+                </div>
                 <div v-else class="customerFav-Main-outOfStock">目前缺貨中</div>
+                
               </div>
             </div>
             <img class="customerFav-Main-remove" :src="crossImg" @click="deleteFav(item)">
@@ -59,6 +63,7 @@ export default {
       product: {},
       newFavProducts: [],
       isLoading: false,
+      isAdding: false,
       deleteItem: '',
     }
   },
@@ -85,17 +90,16 @@ export default {
     addtoCart(id, qty=1){
         const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`;
         const vm = this;
-        vm.isLoading = true;
+        vm.isAddCart = id;
         const cart = {
 	        product_id: id,
 	        qty,
         };
         this.$http.post(api, { data: cart }).then((res) => {
-            vm.isLoading = false;
             console.log('加至購物車',res.data);
             if(res.data.success){
               console.log('加至購物車成功',res.data);
-              vm.isAddCart = res.data.data.product.id;
+              vm.isAddCart = '';
               this.$bus.$emit('update:cart');
             }
         });
