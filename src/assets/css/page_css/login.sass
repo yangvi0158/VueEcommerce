@@ -26,6 +26,7 @@
                 width: 100%
                 background-color: $white
                 border: none
+                border-radius: 0 !important
                 height: 60px
                 margin-bottom: 20px
                 +input
@@ -44,3 +45,23 @@
             .loginText
                 +contentText
                 text-align: center 
+
+
+@media screen and (max-width: 760px) 
+    .login
+        .loginTop
+            .loginTopImg
+        .loginMain
+            width: 60% !important
+            margin-top: 1%
+            min-width: 250px
+            form
+                .formTitle
+                    font-size: 2rem !important
+                .loginInput
+                    border-radius: 0 !important
+
+                .loginCheckbox
+                    margin-bottom: 30px !important
+                .loginBtn
+                .loginText

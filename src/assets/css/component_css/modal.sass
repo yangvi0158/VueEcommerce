@@ -184,3 +184,54 @@ input:-webkit-autofill
             .productModal-addtoCart-disabled
                 background-color: $grey !important
                 cursor: not-allowed !important
+
+@media screen and (max-width: 500px) 
+    .productModal-body
+        +flexbox(center,center,column) 
+        .productModal_Left
+            +flexbox(center,center,row)
+            .productModal_img
+                width: 50% !important
+        .productModal_Right
+            width: 80% !important
+            +flexbox(center,center,column)
+            .productModal_Right_Top
+                margin-top: 3% !important
+                margin-bottom: 5% !important
+                +flexbox(center,center,column)
+                .productModal-category
+                .productModal-title
+                .productModal-price
+                    +contentText
+            .productModal_Right_Center
+                margin-bottom: 5%
+                width: auto
+                .productModal-ingredient
+                .productModal-size
+            .productModal_Right_Bottom
+                //border: $border
+                width: 65%
+                
+                .productModal-num
+                    width: 100%
+                    +flexbox(space-between, center, row)
+                    color: $coffee
+                    margin-bottom: 5%
+                    img
+                        width: 15px
+                        cursor: pointer
+                    span
+                        font-size: 2rem
+                .productModal-addtoCart
+                    width: 100%
+                    border: none
+                    background-color: $coffee
+                    color: white
+                    padding: 3% 10%
+                    +contentText
+                    text-align: center
+                    &:hover
+                        filter: brightness(.8)
+                .productModal-addtoCart-disabled
+                    background-color: $grey !important
+                    cursor: not-allowed !important

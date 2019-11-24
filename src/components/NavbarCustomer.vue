@@ -1,52 +1,106 @@
 <template>
-  <div class="nav">
-    <div class="navLeft">
-      <router-link to="/product/all">
-        <span class="navLeft_btn" @click="sendtoProduct">購買商品</span>
-      </router-link>
-      <router-link to="/admin">
-        <span class="navLeft_btn">後台管理</span>
-      </router-link>
-    </div>
-    <div class="navCenter">
-      <router-link to="/"><img class="navbarImg" :src="logoImg"></router-link>
-    </div>
-    <div class="navRight">
-      <div class="nav-favorite">
-        <router-link to="/favorites"><img class="navbarImg" :src="loveImg" @click="sendtoFavorite"></router-link>
-        <span class="navImg-span">({{favProducts.length}})</span>
+  <div class="allnav">
+    <div class="nav navbigSize">
+      <div class="navLeft">
+        <router-link to="/product/all">
+          <span class="navLeft_btn" @click="sendtoProduct">購買商品</span>
+        </router-link>
+        <router-link to="/admin">
+          <span class="navLeft_btn backend">後台管理</span>
+        </router-link>
       </div>
-      <div class="dropdown">
-        <img class="navbarImg dropdown-toggle" :src="cartImg"
-        id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <span class="navImg-span" id="dropdownMenuButton" data-toggle="dropdown">({{cartProducts.carts.length}})</span>
-        <div class="dropdown-menu dropdown-menu-right scrollable-menu" aria-labelledby="dropdownMenuButton">
-          <ul>
-            <li class="dropdown-item dropdown-flex" v-for="item in cartProducts.carts" href="#">
-              <img class="item-img" :src="item.product.imageUrl">
-              <p class="item-detail">
-              {{item.product.title}}<br>
-              NT${{item.product.price}}<br>
-              qty:{{item.qty}}<br>
-              total:NT{{item.total|currency}}<br>
-              </p>
-            </li>
-          </ul>
-          <div class="dropdown-bottom">
-            <div class="dropdown-totalPrice">
-              <span>Total</span>
-              <span>NT{{cartProducts.total|currency}}</span>
+      <div class="navCenter">
+        <router-link to="/"><img class="navbarImg" :src="logoImg"></router-link>
+      </div>
+      <div class="navRight">
+        <div class="nav-favorite">
+          <router-link to="/favorites"><img class="navbarImg" :src="loveImg" @click="sendtoFavorite"></router-link>
+          <span class="navImg-span">({{favProducts.length}})</span>
+        </div>
+        <div class="dropdown">
+          <img class="navbarImg dropdown-toggle" :src="cartImg"
+          id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="navImg-span" id="dropdownMenuButton" data-toggle="dropdown">({{cartProducts.carts.length}})</span>
+          <div class="dropdown-menu dropdown-menu-right scrollable-menu" aria-labelledby="dropdownMenuButton">
+            <ul>
+              <li class="dropdown-item dropdown-flex" v-for="item in cartProducts.carts" href="#">
+                <img class="item-img" :src="item.product.imageUrl">
+                <p class="item-detail">
+                {{item.product.title}}<br>
+                NT${{item.product.price}}<br>
+                qty:{{item.qty}}<br>
+                total:NT{{item.total|currency}}<br>
+                </p>
+              </li>
+            </ul>
+            <div class="dropdown-bottom">
+              <div class="dropdown-totalPrice">
+                <span>Total</span>
+                <span>NT{{cartProducts.total|currency}}</span>
+              </div>
+              <router-link to="/cart">
+                <button class="dropdown-checkout">CHECKOUT</button>
+              </router-link>
             </div>
-            <router-link to="/cart">
-              <button class="dropdown-checkout">CHECKOUT</button>
-            </router-link>
           </div>
         </div>
+        <img class="navbarImg navbarImg_nomMargin" :src="searchImg" @click="showSearch = !showSearch">
+        <input type="text" class="search" placeholder="search" :class="{'searching': showSearch}" 
+        v-model="searchKeyword" @keyup.enter="goSearch">
       </div>
-      <img class="navbarImg navbarImg_nomMargin" :src="searchImg" @click="showSearch = !showSearch">
-      <input type="text" class="search" placeholder="search" :class="{'searching': showSearch}" 
-      v-model="searchKeyword" @keyup.enter="goSearch">
-    </div>
+    </div> 
+
+    <div class="nav navSmallSize">
+      <div class="navTop">
+        <router-link to="/"><img class="navbarImg" :src="logoImg"></router-link>
+        <div class="navLeft">
+          <router-link to="/product/all">
+            <span class="nav_btn" @click="sendtoProduct">購買商品</span>
+          </router-link>
+          <router-link to="/admin">
+            <span class="nav_btn backend">後台管理</span>
+          </router-link>
+        </div>
+      </div>
+      <div class="navBottom">
+        <div class="navRight">
+          <div class="nav-favorite">
+            <router-link to="/favorites"><img class="navbarImg" :src="loveImg" @click="sendtoFavorite"></router-link>
+            <span class="navImg-span">({{favProducts.length}})</span>
+          </div>
+          <div class="dropdown">
+            <img class="navbarImg dropdown-toggle" :src="cartImg"
+            id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="navImg-span" id="dropdownMenuButton" data-toggle="dropdown">({{cartProducts.carts.length}})</span>
+            <div class="dropdown-menu dropdown-menu-right scrollable-menu" aria-labelledby="dropdownMenuButton">
+              <ul>
+                <li class="dropdown-item dropdown-flex" v-for="item in cartProducts.carts" href="#">
+                  <img class="item-img" :src="item.product.imageUrl">
+                  <p class="item-detail">
+                  {{item.product.title}}<br>
+                  NT${{item.product.price}}<br>
+                  qty:{{item.qty}}<br>
+                  total:NT{{item.total|currency}}<br>
+                  </p>
+                </li>
+              </ul>
+              <div class="dropdown-bottom">
+                <div class="dropdown-totalPrice">
+                  <span>Total</span>
+                  <span>NT{{cartProducts.total|currency}}</span>
+                </div>
+                <router-link to="/cart">
+                  <button class="dropdown-checkout">CHECKOUT</button>
+                </router-link>
+              </div>
+            </div>
+          </div>
+          <img class="navbarImg navbarImg_nomMargin" :src="searchImg" @click="showSearch = !showSearch">
+          <input type="text" class="search" placeholder="search" :class="{'searching': showSearch}" 
+          v-model="searchKeyword" @keyup.enter="goSearch">
+        </div>
+      </div>
+    </div> 
   </div> 
 </template>
 

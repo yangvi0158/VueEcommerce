@@ -5,7 +5,6 @@
         <li class="footer_navItem"><a href="#">退換貨處理</a></li>
         <li class="footer_navItem"><a href="#">常見問題</a></li>
         <li class="footer_navItem"><a href="#">售後服務</a></li>
-        <li class="footer_navItem"><a href="#">訂閱電子報</a></li>
     </ul>
     <div class="footer_social">
         <a href="#"><img class="socialIcon" :src="footerIcon_ig"></a>

@@ -1,118 +1,123 @@
-
-.nav
-    +flexbox(center,center,row)
-    width: 80%
-    height: 130px
+.allnav
     //border: $border
-    .navLeft
-        flex: 4
-        //text-decoration: none
-        //border: $border
-        +flexbox(flex-start, center, row)
-        a
-            text-decoration: none
-        .navLeft_btn
-             color: $black
-             //border: $border
-             +contentText
-             +a_css
-             //border: $border
-             margin-right: 50px
-             transform: translateX(-15px)
-             +btnborder(80px,.4rem)           
-    .navCenter
-        flex: 2
-        //border: $border
+    width: 80%
+    .navSmallSize
+        display: none !important
+    .nav
         +flexbox(center,center,row)
-        .navbarImg
-            height: 30px          
-    .navRight
-        flex: 4
+        width: 100%
+        height: 130px
         //border: $border
-        +flexbox(flex-end,center,row)
-        .nav-favorite
-            +flexbox(none,flex-end,row)
+        .navLeft
+            flex: 4
+            //text-decoration: none
             //border: $border
-        .signout
-            color: $black
-            +contentText
-            +a_css
-            +btnborder(90px,.2rem)
-        .navbarImg
-            height: 20px
-            cursor: pointer
-            //border: $border
-            +a_css
-            &:hover
-                transform: scale(1.2)
-                transition: .2s
-                opacity: 1
-        .navImg-span
-            font-size: .8rem
-            margin-right: 20px
+            +flexbox(flex-start, center, row)
             a
+                text-decoration: none
+            .navLeft_btn
+                color: $black
+                //border: $border
+                +contentText
+                +a_css
+                //border: $border
+                margin-right: 50px
+                transform: translateX(-15px)
+                +btnborder(80px,.4rem)           
+        .navCenter
+            flex: 2
+            //border: $border
+            +flexbox(center,center,row)
+            .navbarImg
+                height: 30px          
+        .navRight
+            flex: 4
+            //border: $border
+            +flexbox(flex-end,center,row)
+            .nav-favorite
+                +flexbox(none,flex-end,row)
+                //border: $border
+            .signout
+                color: $black
+                +contentText
+                +a_css
+                +btnborder(90px,.2rem)
+            .navbarImg
+                height: 20px
+                cursor: pointer
+                //border: $border
+                +a_css
                 &:hover
-                    text-decoration: none !important
-                    border: none !important 
-        .navbarImg_nomMargin
-            margin: 0
-        .search
-            background-color: transparent
-            border: none
-            border-bottom: $border
-            width: 0px
-            transition: .3s
-            margin-left: 5px
-            +contentText
-            // &:focus
-            //     outline: none
-            //     width: 100px
-        .searching
-            width: 100px !important
-            outline: none !important
+                    transform: scale(1.2)
+                    transition: .2s
+                    opacity: 1
+            .navImg-span
+                font-size: .8rem
+                margin-right: 20px
+                a
+                    &:hover
+                        text-decoration: none !important
+                        border: none !important 
+            .navbarImg_nomMargin
+                margin: 0
+            .search
+                background-color: transparent
+                border: none
+                border-bottom: $border
+                border-radius: 0 !important
+                width: 0px
+                transition: .3s
+                margin-left: 5px
+                +contentText
+                // &:focus
+                //     outline: none
+                //     width: 100px
+            .searching
+                width: 100px !important
+                outline: none !important
 
-.dropdown-flex
-    +flexbox(space-around,center,row)
-    border-bottom: $border
-    padding:  15px 10px 0px 0
-    .item-img
-        width: 60px
-        height: auto
-    .item-detail
-        +contentText
-        font-size: .3rem
-        line-height:  1rem
-        letter-spacing: .05rem
-.dropdown-bottom
-    +flexbox(center,center,column)
-    .dropdown-totalPrice
-        +flexbox(space-between,center,row)
-        width: 80%
-        margin-bottom: 10px
-        +contentText
-    a
-        width: 80%
-        .dropdown-checkout
-            +coffeeBtn
-            padding: 10px 0
-            width: 100%
+    .dropdown-flex
+        +flexbox(space-around,center,row)
+        border-bottom: $border
+        padding:  15px 10px 0px 0
+        .item-img
+            width: 60px
+            height: auto
+        .item-detail
+            +contentText
             font-size: .3rem
             line-height:  1rem
             letter-spacing: .05rem
-            margin-bottom: 20px
+    .dropdown-bottom
+        +flexbox(center,center,column)
+        .dropdown-totalPrice
+            +flexbox(space-between,center,row)
+            width: 80%
+            margin-bottom: 10px
+            +contentText
+        a
+            width: 80%
+            .dropdown-checkout
+                +coffeeBtn
+                padding: 10px 0
+                width: 100%
+                font-size: .3rem
+                line-height:  1rem
+                letter-spacing: .05rem
+                margin-bottom: 20px
 
-.scrollable-menu 
-    height: auto
-    max-height: 450px
-    overflow-x: hidden
-    &::-webkit-scrollbar 
-        //-webkit-appearance: none
-        width: 5px
-    &::-webkit-scrollbar-track
-        background-color: $beige
-    &::-webkit-scrollbar-thumb 
-        border-radius: 3px
-        background-color: $coffee
+    .scrollable-menu 
+        height: auto
+        max-height: 450px
+        overflow-x: hidden
+        &::-webkit-scrollbar 
+            //-webkit-appearance: none
+            width: 5px
+        &::-webkit-scrollbar-track
+            background-color: $beige
+        &::-webkit-scrollbar-thumb 
+            border-radius: 3px
+            background-color: $coffee
 
 
 
@@ -122,18 +127,93 @@
 	
 
 @media screen and (max-width: 760px) 
-	.nav
+    .allnav
+        .nav
+            +flexbox(center,center,row)
+            height: 80px
+            .navLeft
+                //border: $border
+                .navLeft_btn
+                    margin: 0
+                    transform: translateX(0px)
+                .backend
+            .navCenter
+                //border: $border
+            .navRight
+                .navbarImg_nomMargin 
+
+
+@media screen and (max-width: 500px) 
+    .allnav
         +flexbox(center,center,row)
-        height: 80px
-        .navLeft
-            //border: $border
-            .navLeft_btn
-                margin: 0
-                transform: translateX(0px)
-        .navCenter
-            //border: $border
-        .navRight
-            .navbarImg_nomMargin 
+        .navbigSize
+            display: none !important
+        .navSmallSize
+            display: block !important
+        .nav
+            +flexbox(center,center,cloumn)
+            .navTop
+                //border: $border
+                +flexbox(center,center,row)
+                margin-bottom: 10px
+                .navbarImg
+                    height: 30px
+                .navLeft
+                    flex: 4
+                    //text-decoration: none
+                    //border: $border
+                    +flexbox(flex-end, center, row)
+                    .nav_btn
+                        color: $black
+                        margin-left: 20px
+                        +contentText
+                        +a_css
+                .navCenter
+                    flex: 2
+                    //border: $border
+                    +flexbox(center,center,row)   
+                .navRight
+                    +flexbox(center,center,row)
 
 
-//@media screen and (max-width: 500px) 
+        .dropdown-flex
+        +flexbox(space-around,center,row)
+        border-bottom: $border
+        padding:  15px 10px 0px 0
+        .item-img
+            width: 60px
+            height: auto
+        .item-detail
+            +contentText
+    .dropdown-bottom
+        +flexbox(center,center,column)
+        .dropdown-totalPrice
+            +flexbox(space-between,center,row)
+            width: 80%
+            margin-bottom: 10px
+            +contentText
+        a
+            width: 80%
+            .dropdown-checkout
+                +coffeeBtn
+                padding: 10px 0
+                width: 100%
+                font-size: .3rem
+                line-height:  1rem
+                letter-spacing: .05rem
+                margin-bottom: 20px
+
+    .scrollable-menu 
+        height: auto
+        max-height: 450px
+        overflow-x: hidden
+        &::-webkit-scrollbar 
+            //-webkit-appearance: none
+            width: 5px
+        &::-webkit-scrollbar-track
+            background-color: $beige
+        &::-webkit-scrollbar-thumb 
+            border-radius: 3px
+            background-color: $coffee
+    .search
+        border-radius: 0 !important
