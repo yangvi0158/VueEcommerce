@@ -149,9 +149,44 @@
 
 
 
-//@media only screen and (min-width: 1480px) 
-	.nav
-        //border: $border
+@media only screen and (min-width: 1480px) 
+    .adTop_Text
+        font-size: 5.5em !important
+    .adTop_R_Rec
+        .adTop_Rec1
+            width: 70% !important
+            padding-bottom: calc(70% - 200px) !important
+    
+    .adCenter
+        .adCenter_L
+            .adCenter_Text
+                font-size: 2rem !important
+                span
+                    font-size: 1.75em
+            .adCenter_Img
+                width: 75% !important
+                max-width: 500px        
+        .adCenter_R
+            .adCenter_Img
+                width: 75% !important
+                max-width: 500px
+    .adBottom
+        .adBottom_L
+            flex: 5
+            height: 100%
+            .adBottom_L_Text
+                top: 20%
+                left: 20% !important
+                .adBottom_title
+                    font-size: 5rem !important
+                    letter-spacing: .2rem
+                    margin-bottom: 10%
+                .adBottom_p
+                    font-weight: 800
+                    margin-bottom: 5%
+                    font-size: 1.5rem
+
+
 
 @media screen and (max-width: 950px) 
     .adTop

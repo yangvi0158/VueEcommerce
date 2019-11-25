@@ -194,6 +194,29 @@ export default {
   transition: .2s;
 }
 
+@media only screen and (min-width: 1300px) {
+  .couponMain{
+  }
+  .couponMain_Right{
+    width: 100%;
+    margin-left: 100px;
+  }
+  .couponMain_Right_Top,
+  .coupon_description,
+  .couponMain_Right_Bottom{
+    max-width: 450px;
+    width: 100%;
+    min-width: 200px;
+    margin-bottom: 30px;
+    color: #494948;
+  }
+  .couponMain_Right_Top{
+    min-height: 30px;
+    margin-top: 50px;
+  }
+}
+
+
 @media only screen and (max-width: 690px) {
 .couponMain{
   width: 100%;
