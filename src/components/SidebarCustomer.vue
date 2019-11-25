@@ -53,7 +53,7 @@
         </div>
         <div class="smallSizeUse">
             <div id="hambar" @click="show = !show">
-                <img src="../assets/img/navbar.png">
+                <img src="../assets/img/sidebar/sidebar.png">
             </div>
             <transition name="ul">
                 <div class="sidebarCustomer" v-if="show">

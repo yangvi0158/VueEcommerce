@@ -1,18 +1,10 @@
 <template>
   <div class="customerMain" @click="showSortByul = false">
     <SidebarCustomer/>
-    <!--loading-->
-    <loading 
-      :active.sync="isLoading"
-      color="#646159"
-      height="50"
-      width="50"
-    ></loading>
     <!--商品列表-->
     <div class="customerRight">
         <div class="customerMainContent-Top">
-            <span v-if="filteredProducts[0]">搜尋關於 "{{searchKeyword}}" 的結果</span>
-            <span v-else>查無關於 "{{searchKeyword}}" 的結果</span>
+            <span class="customerBreadcrumbs">{{nowPage}}</span>
             <button class="customerSortBy" @click.stop="showSortByul = !showSortByul">
               SORT BY
             </button>
@@ -78,8 +70,8 @@
                       <p class="productModal-price">NT{{product.price|currency}}</p>
                     </div>
                     <div class="productModal_Right_Center">
-                      <p class="productModal-ingredient">商品材料/成分：{{product.ingredient}}</p>
-                      <p class="productModal-size">商品規格：{{product.size}}</p>
+                      <div class="productModal-ingredient">商品材料/成分：{{product.ingredient}}</div>
+                      <div class="productModal-size">商品規格：{{product.size}}</div>
                     </div>
                     <div class="productModal_Right_Bottom">
                       <div class="productModal-num">
@@ -89,9 +81,9 @@
                       </div>
                       <button class="productModal-addtoCart" @click="addtoCart(product.id, product.num)"
                       :disabled="isLoading" :class="{'productModal-addtoCart-disabled':isLoading}">
-                        <span v-if="isAddCart === product.id">已加入購物車&nbsp;</span>
-                        <span v-else>ADD TO CART&nbsp;</span>
-                        <i  v-if="isLoading" class="fas fa-spinner fa-spin"></i>
+                      <span v-if="isAddCart === product.id">已加入購物車&nbsp;</span>
+                      <span v-else>ADD TO CART&nbsp;</span>
+                      <i  v-if="isLoading" class="fas fa-spinner fa-spin"></i>
                       </button>
                     </div>
                   </div>
@@ -99,14 +91,20 @@
             </div>
         </div>
     </div>
+
+
+
+
+
   </div>
 </template>
 
 <script>
-import SidebarCustomer from '../SidebarCustomer';
+import SidebarCustomer from '@/components/SidebarCustomer';
 import $ from 'jquery';
+
 export default {
-  name: 'CustomerProduct-Search',
+  name: 'CustomerProduct',
   components: {
     SidebarCustomer,
   },
@@ -126,35 +124,37 @@ export default {
       isFavorite: false,
       allFavorite: [],
       isAddCart: '',
-      searchKeyword: '',
     }
   },
   methods:{
+    //取得產品資訊
     getProducts(){
         const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/products/all`;
         const vm = this;
-        vm.isLoading = true;
+        //vm.isLoading = true;
         this.$http.get(api).then((res) => {
-            vm.isLoading = false;
             vm.allProducts = res.data.products;
             vm.getPagination = res.data.pagination;
-            console.log('拿取商品列表',res.data);
-            console.log('我是allproducts',vm.allProducts);
+            //vm.isLoading = false;
+            //console.log('拿取商品列表',res.data);
+            //console.log('我是allproducts',vm.allProducts);
         });
     },
+    //取得單一產品資訊
     getProduct(id){
         const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/product/${id}`;
         const vm = this;
         this.$http.get(api).then((res) => {
             vm.product = res.data.product;
             vm.product.num = 1;
-            console.log('拿取單一商品細節',res.data);
-            console.log('我是product',vm.product);
+            //console.log(res.data);
+            //console.log('我是product',vm.product);
             if(res.data.success){
               $('#productModal').modal('show');
             }
         });
     },
+    //加入購物車
     addtoCart(id, qty=1){
         const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`;
         const vm = this;
@@ -165,16 +165,15 @@ export default {
         };
         this.$http.post(api, { data: cart }).then((res) => {
             vm.isLoading = false;
-            console.log('加至購物車',res.data);
             if(res.data.success){
-              console.log('加至購物車成功',res.data);
               vm.isAddCart = res.data.data.product.id;
-
+              //console.log('加至購物車成功',res.data);
               //$('#productModal').modal('hide');
               this.$bus.$emit('update:cart');
             }
         });
     },
+    //設置產品數量上限
     countNum(operator){
       if(operator === 1 && this.product.num>0){
         this.product.num -= 1;
@@ -185,6 +184,7 @@ export default {
         console.log('數量',this.product.num,this.product);
       }
     },
+    //加入我的最愛
     addFavorite(item){
       const vm = this;
       let arrIndex = vm.allFavorite.findIndex(function(value,index,array){
@@ -195,10 +195,12 @@ export default {
       }else{
         vm.allFavorite.splice(arrIndex,1);
       }
-      console.log('我是allfavorite',vm.allFavorite);
+      //console.log('我是allfavorite',vm.allFavorite);
+      this.$bus.$emit('updateFavtoNav',this.allFavorite);
     }
   },
   computed:{
+    //商品排序
     sortdata(){
       let vm = this;
       let key = vm.sortBy;
@@ -210,26 +212,62 @@ export default {
           }
       })
     },
-    filteredProducts(){
-      const vm = this;
+    //根據分類顯示商品
+    filteredProducts() {
       const product = this.allProducts;
       let filtered = '';
-      filtered = this.allProducts.filter((el) => {
-        return el.title.includes(vm.searchKeyword);
-      })
-      return filtered;
+      switch (this.$route.name) {
+        case 'Christmas':
+          this.nowPage = '溫馨過聖誕';
+          filtered = this.allProducts.filter((el) => {
+            return el.unit === 'christmas';
+          });
+          return filtered;
+        case 'Halloween':
+          this.nowPage = '調皮萬聖節特輯';
+          filtered = this.allProducts.filter((el) => {
+            return el.unit === 'halloween';
+          });
+          return filtered;
+        case 'All':
+          this.nowPage = '全部商品';
+          return product;
+        case 'Groceries':
+          this.nowPage = '雜貨';
+          filtered = this.allProducts.filter((el) => {
+            return el.category === '雜貨';
+          });
+          return filtered;
+        case 'Foods':
+          this.nowPage = '食品';
+          filtered = this.allProducts.filter((el) => {
+            return el.category === '食品';
+          });
+          return filtered;
+        case 'Toys':
+          this.nowPage = '玩具';
+          filtered = this.allProducts.filter((el) => {
+            return el.category === '玩具';
+          });
+          return filtered;
+        case 'Decorations':
+          this.nowPage = '裝飾';
+          filtered = this.allProducts.filter((el) => {
+            const result = el.category === '裝飾';
+            return result;
+          });
+          return filtered;
+        default:
+          return product;
+      }
     },
   },
   created() {
     const vm = this;
     this.getProducts();
-    this.searchKeyword = this.$route.params.keyword; //透過路由取得
-    vm.$bus.$on('update:search', (value) => {
-      this.searchKeyword = value;
+    vm.$bus.$on('updateProduct:fav', (item)=>{
+      vm.allFavorite = item;
     });
-  },
-  beforeDestroy(){
-    this.$bus.$emit('updateFavorite',this.allFavorite);
   },
 }
 

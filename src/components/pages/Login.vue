@@ -34,7 +34,7 @@ export default {
   },
   data(){
     return{
-      logoImg: require("@/assets/img/logo.png"),
+      logoImg: require("@/assets/img/navbar/logo.png"),
       user:{
         username: '',
         password: '',

@@ -7,6 +7,7 @@
       height="50"
       width="50"
     ></loading>   
+
     <div class="customerFav_Top">
       <p class="customerFav-Title">慾望清單</p>
       <p class="customerFav-subTitle">{{favProducts.length}} Items</p>
@@ -25,19 +26,12 @@
               <div class="customerFav-Main-category">{{item.category}}</div>
               <br>{{item.title}}
               <br>NT{{item.price|currency}}
-              <div class="customerFav-Main-NumAndAdd">
-                <!--div class="customerFav-Main-num">
-                  <img :src="cutImg" @click="countNum(1)">
-                      <span :value="num" v-model="item.num">{{item.num}}</span>
-                  <img :src="addImg" @click="countNum(2)">
-                </div-->
-
+              <div class="customerFav-Main-Btn">
                 <div v-if="item.is_enabled" class="customerFav-Main-addtoCart" @click="addtoCart(item.id, 1)">
                   加入購物車
                   <i  v-if="isAddCart === item.id" class="fas fa-spinner fa-spin"></i>
                 </div>
                 <div v-else class="customerFav-Main-outOfStock">目前缺貨中</div>
-                
               </div>
             </div>
             <img class="customerFav-Main-remove" :src="crossImg" @click="deleteFav(item)">
@@ -51,11 +45,9 @@
 <script>
 export default {
   name: 'CustomerFavorite',
-  components: {
-  },
   data(){
     return{
-      crossImg: require("@/assets/img/cross_small_black.png"),
+      crossImg: require("@/assets/img/other/cross_small_black.png"),
       addImg: require("@/assets/img/cart/add.png"),
       cutImg: require("@/assets/img/cart/sub.png"),
       favProducts: [],
@@ -68,6 +60,7 @@ export default {
     }
   },
   methods:{
+    //刪除我的最愛項目
     deleteFav(item){
       const vm = this;
       let arrIndex = vm.favProducts.findIndex(function(value){
@@ -79,14 +72,7 @@ export default {
         this.$bus.$emit('favToNav',vm.favProducts);
       }, 1000);
     },
-    // getProduct(id){
-    //     const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/product/${id}`;
-    //     const vm = this;
-    //     this.$http.get(api).then((res) => {
-    //         vm.product = res.data.product;
-    //         //vm.product.num = 1;
-    //     });
-    // },
+    //加至購物車
     addtoCart(id, qty=1){
         const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`;
         const vm = this;
@@ -104,53 +90,14 @@ export default {
             }
         });
     },
-    // countNum(operator){
-    //   if(operator === 1 && this.item.num>0){
-    //     this.item.num -= 1;
-    //     console.log('數量',this.item.num,item.num);
-
-    //   }else if(operator === 2 && item.num.num<9){
-    //     item.num += 1;
-    //     console.log('數量',this.item.num,this.item);
-    //   }
-    // },
   },
   created(){
     const vm = this;
-    vm.isLoading = true;
     vm.$bus.$on('updateFavorite:fav', (item)=>{
       this.favProducts = item;
     });
-  },
-  mounted(){
-    const vm = this;
-    vm.isLoading = false;
-  },
-  beforeDestory() {
-   //this.$bus.$off('updateFavorite');
-
-  },
+  }
 }
 
 </script>
 
-<style>
-@import url(http://weloveiconfonts.com/api/?family=entypo);
-@font-face {
-  font-family: 'entypo';
-  src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-90/entypo.woff') format('woff');
-}
-
-.entypo-heart:before{
-  content:"\2665";
-}
-
-
-[class*="entypo-"]:before {
-  font-family: 'entypo', sans-serif;
-  color: grey;
-  opacity: .5;
-  position: absolute;
-  right: 0;
-}
-</style>

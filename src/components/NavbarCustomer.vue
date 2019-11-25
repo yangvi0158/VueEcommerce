@@ -1,5 +1,6 @@
 ｀<template>
   <div class="allnav">
+    <!--筆電尺寸用之導覽列-->
     <div class="nav navbigSize">
       <div class="navLeft">
         <router-link to="/product/all">
@@ -50,6 +51,7 @@
       </div>
     </div> 
 
+    <!--手機尺寸用之導覽列-->
     <div class="nav navSmallSize">
       <div class="navTop">
         <router-link to="/"><img class="navbarImg" :src="logoImg"></router-link>
@@ -114,7 +116,7 @@ export default {
   },
   data(){
     return{
-      logoImg: require("../assets/img/logo.png"),
+      logoImg: require("../assets/img/navbar/logo.png"),
       loveImg: require("../assets/img/navbar/Love_icon.png"),
       cartImg: require("../assets/img/navbar/Cart_icon.png"),
       searchImg: require("../assets/img/navbar/Search_icon.png"),
@@ -138,6 +140,10 @@ export default {
       vm.$router.push(`/products/${vm.searchKeyword}`);
       console.log('goSearch');
       vm.$bus.$emit('update:search',vm.searchKeyword);
+      window.setTimeout(function(){
+        vm.$bus.$emit('updateProductSearch:fav',vm.favProducts);
+      }, 1000);
+      //console.log('vm.favProducts',vm.favProducts)
     },
     sendtoFavorite(){
       const vm = this;
@@ -163,11 +169,47 @@ export default {
     //接收從product傳來的favorites
     vm.$bus.$on('updateFavtoNav', (item)=>{
       vm.favProducts = item;
+      console.log('從nav傳去product');
     });
     //接收從fav回傳的favorites
     vm.$bus.$on('favToNav', (item)=>{
       vm.favProducts = item;
     });
   },
+  watch: {
+    '$route'(to){
+      console.log(to);
+      switch (this.$route.name) {
+        case 'Christmas':
+        case 'Halloween':
+        case 'All':
+        case 'Groceries':
+        case 'Foods':
+        case 'Toys':
+        case 'Decorations':
+          this.sendtoProduct();
+      }
+    },
+    // sendFavorite() {
+    //   let sendOrNot = false;
+    //   const vm = this;
+    //   switch (this.$route.name) {
+    //     case 'Christmas':
+    //     case 'Halloween':
+    //     case 'All':
+    //     case 'Groceries':
+    //     case 'Foods':
+    //     case 'Toys':
+    //     case 'Decorations':
+    //       vm.sendtoProduct();
+    //       sendOrNot = true;
+    //       return sendOrNot;
+
+    //     case 'CustomerCoupon':
+    //       sendOrNot = false;
+    //       return fsendOrNot;
+    //   }
+    // },
+  }
 }
 </script>

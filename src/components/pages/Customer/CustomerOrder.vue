@@ -1,4 +1,5 @@
 <template>
+  <!--顧客訂單頁面-->
   <div class="customerMain" style="flex-direction: column; justify-content: center; align-items: center;">
     <!--loading-->
     <loading 
@@ -7,6 +8,7 @@
       height="50"
       width="50"
     ></loading> 
+    <!--上方進度條-->
     <div class="customerOrder_Top">
       <div class="customerCart-process">
         <div class="customerCart-process-circle"></div>
@@ -21,6 +23,7 @@
         <p class="customerCart-process-title">③ 付款完成</p>
       </div>
     </div>
+    <!--主要訂單資訊-->
     <div class="customerOrder-Main">
         <form class="customerOrder-form" @submit.prevent="payOrder">
             <table class="table table-borderless mb-5">
@@ -78,6 +81,7 @@
                 </tbody>
             </table>
             <p v-show="order.is_paid" class="payRemark">提醒您：付款後，從備貨到寄出商品為 3 個工作天。（不包含假日）</p>
+      
             <div class="customerOrder-pay mb-5" v-if="!order.is_paid">
                 <button class="customerOrder-payBtn mb-5">前往付款</button>
             </div>
@@ -91,13 +95,12 @@
 
 <script>
 import $ from 'jquery';
+
 export default {
   name: 'CustomerOrder',
-  components: {
-  },
   data(){
     return{
-      crossImg: require("@/assets/img/cross_small_black.png"),
+      crossImg: require("@/assets/img/other/cross_small_black.png"),
       addImg: require("@/assets/img/cart/add.png"),
       cutImg: require("@/assets/img/cart/sub.png"),
       cartProducts: [],
@@ -111,32 +114,31 @@ export default {
     }
   },
   methods:{
+    //取得訂單資訊
     getOrder(){
         const vm = this;
         vm.isLoading = true;
-        console.log('getOrder')
+        //console.log('getOrder')
         const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/order/${vm.orderId}`;
         this.$http.get(api).then((res) => {
             vm.order = res.data.order;
             vm.isLoading = false;
-            console.log('取得訂單資料',res);
+            //console.log('取得訂單資料',res);
             this.$bus.$emit('update:cart');
         });
     },
+    //進行付款
     payOrder(){
         const vm = this;
         const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/pay/${vm.orderId}`;
-        //vm.isLoading = true;
         this.$http.post(api).then((res) => {
             if(res.data.success){
                 vm.getOrder();
-                console.log('付款完成',res);
+                //console.log('付款完成',res);
                 this.$bus.$emit('update:cart');
             }else{
-                console.log('付款失敗',res);
+                //console.log('付款失敗',res);
             }
-            //vm.isLoading = false;
-            //vm.getPagination = res.data.pagination;
         });
     },
     getCart(){
@@ -144,40 +146,16 @@ export default {
         const vm = this;
         this.$http.get(api).then((res) => {
             vm.cartProducts = res.data.data;
-            console.log('getCarts!',res.data);
+            //console.log('getCarts!',res.data);
         });
     },
   },
-  computed:{
-
-  },
   created() {
     this.orderId = this.$route.params.orderId; //透過路由取得
-	  console.log(this.orderId);
+	  //console.log(this.orderId);
     this.getOrder();
     this.getCart();
-  },
+  }
 }
 
 </script>
-
-<style>
-@import url(http://weloveiconfonts.com/api/?family=entypo);
-@font-face {
-  font-family: 'entypo';
-  src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-90/entypo.woff') format('woff');
-}
-
-.entypo-heart:before{
-  content:"\2665";
-}
-
-
-[class*="entypo-"]:before {
-  font-family: 'entypo', sans-serif;
-  color: grey;
-  opacity: .5;
-  position: absolute;
-  right: 0;
-}
-</style>

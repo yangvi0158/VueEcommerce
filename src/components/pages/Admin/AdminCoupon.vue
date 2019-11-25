@@ -8,6 +8,7 @@
           height="50"
           width="50"
         ></loading>   
+        
         <div class="adminMainContent-Top">
             <span class="adminBreadcrumbs">優惠券列表</span>
             <button class="adminBtn" @click="openModal(true)">建立新優惠券</button>
@@ -43,7 +44,7 @@
         <!--pagination-->
         <Pagination @updatepage="getCoupons" :pages="getPagination"></Pagination>
 
-      <!--修改/新增Modal-->  
+        <!--修改/新增Modal-->  
         <div class="modal fade" id="couponModal" tabindex="-1" role="dialog"
           aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-md" role="document">
@@ -123,7 +124,6 @@
 import $ from 'jquery';
 import Pagination from '@/components/Pagination';
 
-
 export default {
   name: 'AdminCoupon',
   components: {
@@ -131,8 +131,8 @@ export default {
   },
   data(){
     return{
-      coupons: [],
       crossImg: require("@/assets/img/modal/cross.png"),
+      coupons: [],
       tempCoupon: {},
       isNew: false,
       isLoading: false,
@@ -148,7 +148,6 @@ export default {
       vm.isLoading = true;
       this.$http.get(api).then((res)=>{
         vm.isLoading = false;
-        //vm.pagination = res.data.pagination;
         vm.getPagination = res.data.pagination;
         console.log('優惠券列表',res.data);
         vm.coupons = res.data.coupons;
@@ -197,11 +196,11 @@ export default {
       if(isNew){
         this.tempCoupon = {};
         this.isNew = true;
-        //console.log('我是temp1',this.tempProduct);
+        //console.log('新',this.tempProduct);
       }else{
         this.tempCoupon = Object.assign({}, item);
         this.isNew = false;
-        //console.log('我是temp2',this.tempProduct);
+        //console.log('舊',this.tempProduct);
       }
       $('#couponModal').modal('show');
     },

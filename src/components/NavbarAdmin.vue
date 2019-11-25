@@ -29,7 +29,7 @@ export default {
   },
   data(){
     return{
-      logoImg: require("../assets/img/logo.png"),
+      logoImg: require("../assets/img/navbar/logo.png"),
       loveImg: require("../assets/img/navbar/Love_icon.png"),
       cartImg: require("../assets/img/navbar/Cart_icon.png"),
       searchImg: require("../assets/img/navbar/Search_icon.png"),

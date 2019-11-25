@@ -1,4 +1,5 @@
 <template>
+  <!--首頁廣告頁-->
   <div class="ad">
     <!--Top-->
     <div class="adTop">
@@ -63,14 +64,12 @@
 <script>
 export default {
   name: 'Ad',
-  components: {
-  },
   data(){
     return{
-      adImg_1: require("@/assets/img/homepage_1.png"),
-      adImg_2: require("@/assets/img/homepage_2.png"),
-      adImg_3: require("@/assets/img/homepage_3.png"),
-      adImg_4: require("@/assets/img/homepage_4.png"),
+      adImg_1: require("@/assets/img/ad/homepage_1.png"),
+      adImg_2: require("@/assets/img/ad/homepage_2.png"),
+      adImg_3: require("@/assets/img/ad/homepage_3.png"),
+      adImg_4: require("@/assets/img/ad/homepage_4.png"),
     }
   }
 }

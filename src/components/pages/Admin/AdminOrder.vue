@@ -1,5 +1,6 @@
 <template>
-  <div class="adminMainContent">
+    <!--訂單列表-->
+    <div class="adminMainContent">
         <!--loading-->
         <loading 
           :active.sync="isLoading"
@@ -42,7 +43,7 @@
 
         <!--pagination-->
         <Pagination @updatepage="getOrders" :pages="getPagination"></Pagination>
-  </div>
+    </div>
 </template>
 
 <script>
@@ -61,6 +62,7 @@ export default {
     }
   },
   filters: {
+    //設定時間格式與補上時間的"0"
     leadingZero(value) {
       let yy = new Date(value*1000).getFullYear();
       let mm = (new Date(value*1000).getMonth()+1<10 ? '0' : '')+(new Date(value*1000).getMonth()+1);

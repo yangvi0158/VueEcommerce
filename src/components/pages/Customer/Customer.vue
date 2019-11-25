@@ -1,29 +1,26 @@
 <template>
+  <!--顧客主要頁面-->
   <div class="customer">
     <NavbarCustomer/>
-    <transition name="slide" mode="out-in">
-      <router-view/>
-    </transition>
+      <transition name="slide" mode="out-in">
+        <router-view/>
+      </transition>
     <Footer/>
   </div>
 </template>
 
 <script>
-import NavbarCustomer from '../NavbarCustomer';
-import Footer from '../Footer';
+import NavbarCustomer from '@/components/NavbarCustomer';
+import Footer from '@/components/Footer';
 export default {
   name: 'Customer',
   components: {
     NavbarCustomer,
     Footer,
   },
-  data(){
-    return{
-      
-    }
-  }
 }
 </script>
+
 
 <style lang="sass">
 .slide-enter

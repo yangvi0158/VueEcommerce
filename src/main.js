@@ -81,6 +81,7 @@ new Vue({
 
 axios.defaults.withCredentials = true;
 
+//登入驗證與否
 router.beforeEach((to, from, next)=>{
   if(to.meta.requiresAuth){
     const api = `${process.env.APIPATH}/api/user/check`;

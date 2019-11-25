@@ -1,20 +1,23 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
+import Dashboard from '@/components/pages/Dashboard';
 import Login from '@/components/pages/Login';
-import Ad from '@/components/pages/Ad';
-import Customer from '@/components/pages/Customer';
-import CustomerProduct from '@/components/pages/CustomerProduct';
-import CustomerProductSearch from '@/components/pages/CustomerProductSearch';
-import CustomerCoupon from '@/components/pages/CustomerCoupon';
-import CustomerCart from '@/components/pages/CustomerCart';
-import CustomerFavorite from '@/components/pages/CustomerFavorite';
-import CustomerOrder from '@/components/pages/CustomerOrder';
-import Admin from '@/components/pages/Admin';
-import AdminProduct from '@/components/pages/AdminProduct';
-import AdminCoupon from '@/components/pages/AdminCoupon';
-import AdminOrder from '@/components/pages/AdminOrder';
-import Dashboard from '@/components/Dashboard';
+
+import Customer from '@/components/pages/Customer/Customer';
+import CustomerProduct from '@/components/pages/Customer/CustomerProduct';
+import CustomerProductSearch from '@/components/pages/Customer/CustomerProductSearch';
+import CustomerCoupon from '@/components/pages/Customer/CustomerCoupon';
+import CustomerCart from '@/components/pages/Customer/CustomerCart';
+import CustomerFavorite from '@/components/pages/Customer/CustomerFavorite';
+import CustomerOrder from '@/components/pages/Customer/CustomerOrder';
+import Ad from '@/components/pages/Customer/Ad';
+
+import Admin from '@/components/pages/Admin/Admin';
+import AdminProduct from '@/components/pages/Admin/AdminProduct';
+import AdminCoupon from '@/components/pages/Admin/AdminCoupon';
+import AdminOrder from '@/components/pages/Admin/AdminOrder';
+
 
 
 

@@ -49,7 +49,7 @@
         <!--pagination-->
         <Pagination @updatepage="getProducts" :pages="getPagination"></Pagination>
 
-      <!--修改/新增Modal-->  
+        <!--修改/新增Modal-->  
         <div class="modal fade" id="productModal" tabindex="-1" role="dialog"
           aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-lg" role="document">
@@ -163,7 +163,6 @@
 import $ from 'jquery';
 import Pagination from '@/components/Pagination';
 
-
 export default {
   name: 'AdminProduct',
   components: {
@@ -171,8 +170,8 @@ export default {
   },
   data(){
     return{
-      products: [],
       crossImg: require("@/assets/img/modal/cross.png"),
+      products: [],
       tempProduct: {},
       isNew: false,
       isLoading: false,
@@ -182,8 +181,7 @@ export default {
     }
   },
   methods:{
-
-    //拿取資料
+    //取得產品列表
     getProducts( page=1 ){
       const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/products?page=${page}`;
       const vm = this;
@@ -197,7 +195,7 @@ export default {
         console.log('拿到商品列表！',vm.products);
       })
     },
-    //修改&新增資料
+    //修改&新增產品資料
     updateProduct(){
       let api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/product`;
       let httpMethod = 'post';
@@ -239,11 +237,11 @@ export default {
       if(isNew){
         this.tempProduct = {};
         this.isNew = true;
-        //console.log('我是temp1',this.tempProduct);
+        //console.log('新',this.tempProduct);
       }else{
         this.tempProduct = Object.assign({}, item);
         this.isNew = false;
-        //console.log('我是temp2',this.tempProduct);
+        //console.log('舊',this.tempProduct);
       }
       $('#productModal').modal('show');
     },
@@ -252,7 +250,7 @@ export default {
       $('#delProductModal').modal('show');
     },
 
-    //上傳檔案
+    //上傳圖片
     uploadFile(){
       const vm = this;
       const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/upload`;

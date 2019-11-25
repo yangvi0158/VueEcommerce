@@ -1,4 +1,5 @@
 <template>
+   <!--後台主要頁面-->
    <div class="admin">
     <NavbarAdmin/>
     <div class="adminMain">
@@ -10,8 +11,8 @@
 
 <script>
 
-import NavbarAdmin from '../NavbarAdmin';
-import SidebarAdmin from '../SidebarAdmin';
+import NavbarAdmin from '@/components/NavbarAdmin';
+import SidebarAdmin from '@/components/SidebarAdmin';
 
 export default {
   name: 'Admin',
@@ -19,11 +20,6 @@ export default {
     NavbarAdmin,
     SidebarAdmin,
   },
-  data(){
-    return{
-      
-    }
-  }
 }
 </script>
 

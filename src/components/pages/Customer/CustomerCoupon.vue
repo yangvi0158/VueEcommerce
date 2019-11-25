@@ -5,7 +5,7 @@
     <!--coupon-->
     <div class="couponMain">
         <div class="couponMain_Left">
-          <img src="@/assets/img/coupon.png">
+          <img src="@/assets/img/coupon/coupon.png">
         </div>
         <div class="couponMain_Right">
           <div class="couponMain_Right_Top">
@@ -40,15 +40,13 @@
 </template>
 
 <script>
-import SidebarCustomer from '../SidebarCustomer';
-import Footer from '../Footer';
+import SidebarCustomer from '@/components/SidebarCustomer';
 import $ from 'jquery';
 
 export default {
   name: 'CustomerCoupon',
   components: {
     SidebarCustomer,
-    Footer,
   },
   data(){
     return{
@@ -58,6 +56,7 @@ export default {
     }
   },
   methods:{
+    //複製優惠碼
     CopyCouponCode(){
       let vm = this;
       let clipboard = vm.copyBtn;
@@ -70,34 +69,14 @@ export default {
       });
     },
   },
-  computed:{
-
-  },
   mounted() {
+    //抓要copy的元素
     this.copyBtn = new this.clipboard(this.$refs.copy);
   },
 }
 </script>
 
 <style>
-@import url(http://weloveiconfonts.com/api/?family=entypo);
-@font-face {
-  font-family: 'entypo';
-  src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-90/entypo.woff') format('woff');
-}
-
-.entypo-heart:before{
-  content:"\2665";
-}
-
-[class*="entypo-"]:before {
-  font-family: 'entypo', sans-serif;
-  color: grey;
-  opacity: .5;
-  position: absolute;
-  right: 0;
-}
-
 .couponMain{
   flex: 5;
   background-color: #F7F6F3;
