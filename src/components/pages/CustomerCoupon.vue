@@ -2,7 +2,7 @@
   <div class="customerMain">
     <SidebarCustomer/>
 
-    <!--商品列表-->
+    <!--coupon-->
     <div class="couponMain">
         <div class="couponMain_Left">
           <img src="@/assets/img/coupon.png">
@@ -177,7 +177,7 @@ export default {
 }
 .copied{
   border: solid 1px transparent;
-  font-size: .4rem;
+  font-size: .6rem;
   opacity: .3;
   height: 10px;
 }
@@ -291,5 +291,23 @@ export default {
 
 
 }
+
+@media only screen and (max-width: 550px){
+  .couponMain{
+    height: 250px;
+    min-width: 360px;
+  }
+  .couponMain_Left{
+    display: none;
+  }
+  .couponMain_Right{
+    width: 100%;
+    margin: 0;
+  }
+  .copied{
+    font-size: .9rem;
+  }
+}
+
 
 </style>

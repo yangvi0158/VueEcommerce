@@ -1,4 +1,4 @@
-<template>
+｀<template>
   <div class="allnav">
     <div class="nav navbigSize">
       <div class="navLeft">
