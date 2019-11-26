@@ -140,7 +140,6 @@ export default {
     }
   },
   methods:{
-
     //拿取優惠券資料
     getCoupons( page=1 ){
       const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/coupons?page=${page}`;
@@ -149,9 +148,9 @@ export default {
       this.$http.get(api).then((res)=>{
         vm.isLoading = false;
         vm.getPagination = res.data.pagination;
-        console.log('優惠券列表',res.data);
+        //console.log('優惠券列表',res.data);
         vm.coupons = res.data.coupons;
-        console.log('拿到優惠券列表！',vm.coupons);
+        //console.log('拿到優惠券列表！',vm.coupons);
       })
     },
     //「新增&修改」優惠券
@@ -163,29 +162,29 @@ export default {
         api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/coupon/${vm.tempCoupon.id}`;
         httpMethod = 'put';
       }
-      console.log('我是temp',this.tempCoupon);
+      //console.log('我是temp',this.tempCoupon);
       this.$http[httpMethod](api, {data: vm.tempCoupon}).then((res)=>{
-        console.log('更新優惠券列表',res.data);
+        //console.log('更新優惠券列表',res.data);
         if(res.data.success){
           $('#couponModal').modal('hide');
           vm.getCoupons();
         }else{
           $('#couponModal').modal('hide');
           vm.getCoupons();
-          console.log('更新優惠券列表失敗');
+          //console.log('更新優惠券列表失敗');
         }
       })
     },
     //刪除單筆優惠券
     deleteCoupon(){
-      console.log(this.tempCoupon);
+      //console.log(this.tempCoupon);
       const vm = this;
       let api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/coupon/${vm.tempCoupon.id}`;
       vm.isLoading = true;
       $('#delCouponModal').modal('hide');
       this.$http.delete(api).then((res)=>{
         vm.isLoading = false;
-        console.log('刪除優惠券',res.data);
+        //console.log('刪除優惠券',res.data);
         vm.getCoupons();
       })
     },

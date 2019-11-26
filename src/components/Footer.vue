@@ -25,9 +25,6 @@
 
 export default {
   name: 'Footer',
-  components: {
-    
-  },
   data(){
     return{
       footerIcon_ig: require("../assets/img/footer/Ig_icon.png"),
@@ -35,8 +32,5 @@ export default {
       footerIcon_mail: require("../assets/img/footer/Mail_icon.png"),
     }
   },
-  methods:{
-
-  }
 }
 </script>

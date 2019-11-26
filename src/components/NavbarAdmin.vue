@@ -24,9 +24,6 @@
 
 export default {
   name: 'NavbarAdmin',
-  components: {
-    
-  },
   data(){
     return{
       logoImg: require("../assets/img/navbar/logo.png"),
@@ -37,6 +34,7 @@ export default {
     }
   },
   methods:{
+    //登出
     signout(){
 		  const api = `${process.env.APIPATH}/logout`;
 		  const vm = this;

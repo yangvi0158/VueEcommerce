@@ -190,9 +190,9 @@ export default {
         vm.isLoading = false;
         //vm.pagination = res.data.pagination;
         vm.getPagination = res.data.pagination;
-        console.log('商品列表',res.data);
+        //console.log('商品列表',res.data);
         vm.products = res.data.products;
-        console.log('拿到商品列表！',vm.products);
+        //console.log('拿到商品列表！',vm.products);
       })
     },
     //修改&新增產品資料
@@ -206,28 +206,28 @@ export default {
       }
       console.log('我是temp',this.tempProduct)
       this.$http[httpMethod](api, {data: vm.tempProduct}).then((res)=>{
-        console.log('更新商品列表',res.data);
+        //console.log('更新商品列表',res.data);
         if(res.data.success){
           $('#productModal').modal('hide');
           vm.getProducts();
         }else{
           $('#productModal').modal('hide');
           vm.getProducts();
-          console.log('更新商品列表失敗');
+          //console.log('更新商品列表失敗');
         }
       })
     },
     //刪除資料
     deleteProduct(){
-      console.log(this.tempProduct);
+      //console.log(this.tempProduct);
       const vm = this;
       let api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/product/${vm.tempProduct.id}`;
       vm.isLoading = true;
       $('#delProductModal').modal('hide');
       this.$http.delete(api).then((res)=>{
         vm.isLoading = false;
-        console.log('刪除商品',res.data);
         vm.getProducts();
+        //console.log('刪除商品',res.data);
       })
     },
 
@@ -264,7 +264,7 @@ export default {
         }
       }).then((res)=>{
         vm.fileUploading = false;
-        console.log(res.data);
+        //console.log(res.data);
         if(res.data.success){
           vm.$set(vm.tempProduct, 'imageUrl', res.data.imageUrl);
         }else{

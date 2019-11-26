@@ -25,13 +25,9 @@
 </template>
 
 <script>
-//import HelloWorld from './components/HelloWorld'
 
 export default {
   name: '',
-  components: {
-    
-  },
   data(){
     return{
       logoImg: require("@/assets/img/navbar/logo.png"),
@@ -46,7 +42,7 @@ export default {
       const api = `${process.env.APIPATH}/admin/signin`;
 		  const vm = this;
       this.$http.post(api, vm.user).then((res) => {
-        console.log(res.data);
+        //console.log(res.data);
         if(res.data.success){
           vm.$router.push('/admin');
         }
@@ -55,8 +51,3 @@ export default {
   }
 }
 </script>
-
-
-<style lang="sass">
-
-</style>

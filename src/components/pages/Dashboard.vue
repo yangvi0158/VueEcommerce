@@ -15,12 +15,6 @@ export default {
   name: 'Dashboard',
   components: {
     Alert,
-  },
+  }
 }
 </script>
-
-
-<style lang="sass">
-    
-
-</style>

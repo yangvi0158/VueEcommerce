@@ -76,7 +76,7 @@
                     <div class="productModal_Right_Bottom">
                       <div class="productModal-num">
                         <img :src="cutImg" @click="countNum(1)">
-                        <span :value="num" v-model="product.num">{{product.num}}</span>
+                        <span v-model="product.num">{{product.num}}</span>
                         <img :src="addImg"  @click="countNum(2)">
                       </div>
                       <button class="productModal-addtoCart" @click="addtoCart(product.id, product.num)"
@@ -177,11 +177,11 @@ export default {
     countNum(operator){
       if(operator === 1 && this.product.num>0){
         this.product.num -= 1;
-        console.log('數量',this.product.num,this.product);
+        //console.log('數量',this.product.num,this.product);
 
       }else if(operator === 2 && this.product.num<9){
         this.product.num += 1;
-        console.log('數量',this.product.num,this.product);
+        //console.log('數量',this.product.num,this.product);
       }
     },
     //加入我的最愛

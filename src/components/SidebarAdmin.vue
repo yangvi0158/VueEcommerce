@@ -56,8 +56,6 @@
 
 export default {
   name: 'SidebarAdmin',
-  components: {
-  },
   data(){
     return{
       show: true,

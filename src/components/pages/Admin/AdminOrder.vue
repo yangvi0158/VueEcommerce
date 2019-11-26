@@ -80,8 +80,8 @@ export default {
         this.$http.get(api).then((res) => {
             vm.orders = res.data.orders;
             vm.getPagination = res.data.pagination;
-            console.log('取得訂單資料',res);
             vm.isLoading = false;
+            //console.log('取得訂單資料',res);
         });
     },
   },

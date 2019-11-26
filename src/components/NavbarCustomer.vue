@@ -16,7 +16,7 @@
       <div class="navRight">
         <div class="nav-favorite">
           <router-link to="/favorites"><img class="navbarImg" :src="loveImg" @click="sendtoFavorite"></router-link>
-          <span class="navImg-span">({{favProducts.length}})</span>
+          <span class="navImg-span">({{ favProducts.length }})</span>
         </div>
         <div class="dropdown">
           <img class="navbarImg dropdown-toggle" :src="cartImg"
@@ -111,9 +111,6 @@
 
 export default {
   name: 'NavbarCustomer',
-  components: {
-    
-  },
   data(){
     return{
       logoImg: require("../assets/img/navbar/logo.png"),
@@ -132,13 +129,13 @@ export default {
         const vm = this;
         this.$http.get(api).then((res) => {
             vm.cartProducts = res.data.data;
-            console.log('getCarts!',res.data);
+            //console.log('getCarts!',res.data);
         });
     },
     goSearch(){
       const vm = this;
       vm.$router.push(`/products/${vm.searchKeyword}`);
-      console.log('goSearch');
+      //console.log('goSearch');
       vm.$bus.$emit('update:search',vm.searchKeyword);
       window.setTimeout(function(){
         vm.$bus.$emit('updateProductSearch:fav',vm.favProducts);
@@ -164,12 +161,12 @@ export default {
     //更新購物車
     vm.$bus.$on('update:cart', () => {
       vm.getCart();
-      console.log('目前購物車',vm.cartProducts);
+      //console.log('目前購物車',vm.cartProducts);
     });
     //接收從product傳來的favorites
     vm.$bus.$on('updateFavtoNav', (item)=>{
       vm.favProducts = item;
-      console.log('從nav傳去product');
+      //console.log('從nav傳去product');
     });
     //接收從fav回傳的favorites
     vm.$bus.$on('favToNav', (item)=>{
@@ -178,7 +175,7 @@ export default {
   },
   watch: {
     '$route'(to){
-      console.log(to);
+      //console.log(to);
       switch (this.$route.name) {
         case 'Christmas':
         case 'Halloween':
@@ -190,26 +187,14 @@ export default {
           this.sendtoProduct();
       }
     },
-    // sendFavorite() {
-    //   let sendOrNot = false;
-    //   const vm = this;
-    //   switch (this.$route.name) {
-    //     case 'Christmas':
-    //     case 'Halloween':
-    //     case 'All':
-    //     case 'Groceries':
-    //     case 'Foods':
-    //     case 'Toys':
-    //     case 'Decorations':
-    //       vm.sendtoProduct();
-    //       sendOrNot = true;
-    //       return sendOrNot;
-
-    //     case 'CustomerCoupon':
-    //       sendOrNot = false;
-    //       return fsendOrNot;
+  },
+  computed: {
+    // favoriteLength(){
+    //   if(this.favProducts){
+    //     return favProducts.length
     //   }
-    // },
+    //   return '';
+    // }
   }
 }
 </script>

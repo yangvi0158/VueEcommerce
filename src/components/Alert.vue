@@ -19,6 +19,7 @@ export default {
     };
   },
   methods: {
+    //更新message
     updateMessage(message, status) {
       const timestamp = Math.floor(new Date() / 1000);
       this.messages.push({
@@ -28,9 +29,11 @@ export default {
       });
       this.removeMessageWithTiming(timestamp);
     },
+    //移除message
     removeMessage(num) {
       this.messages.splice(num, 1);
     },
+    //倒數五秒移除message
     removeMessageWithTiming(timestamp) {
       const vm = this;
       setTimeout(() => {
@@ -44,7 +47,6 @@ export default {
   },
   created() {
     const vm = this;
-
     //自定義名稱 'messsage:push'
     //message: 傳入參數
     //status: 樣式，預設值為 warning

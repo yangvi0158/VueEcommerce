@@ -1,12 +1,6 @@
 <template>
+   <!--慾望清單-->
   <div class="customerMain" style="flex-direction: column">
-    <!--loading-->
-    <loading 
-      :active.sync="isLoading"
-      color="#646159"
-      height="50"
-      width="50"
-    ></loading>   
 
     <div class="customerFav_Top">
       <p class="customerFav-Title">慾望清單</p>

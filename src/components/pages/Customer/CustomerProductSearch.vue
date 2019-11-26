@@ -180,11 +180,11 @@ export default {
     countNum(operator){
       if(operator === 1 && this.product.num>0){
         this.product.num -= 1;
-        console.log('數量',this.product.num,this.product);
+        //console.log('數量',this.product.num,this.product);
 
       }else if(operator === 2 && this.product.num<9){
         this.product.num += 1;
-        console.log('數量',this.product.num,this.product);
+        //console.log('數量',this.product.num,this.product);
       }
     },
     //加入我的最愛
@@ -235,10 +235,10 @@ export default {
     });
     vm.$bus.$on('updateProductSearch:fav', (item) => {
       this.allFavorite = item;
-      console.log('item',item);
-      console.log('this.allFavorite1',this.allFavorite);
+      //console.log('item',item);
+      //console.log('this.allFavorite1',this.allFavorite);
     });
-    console.log('this.allFavorite2',this.allFavorite);
+    //console.log('this.allFavorite2',this.allFavorite);
   },
 }
 

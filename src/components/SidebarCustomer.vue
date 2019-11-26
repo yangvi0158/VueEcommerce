@@ -116,8 +116,6 @@
 
 export default {
   name: 'SidebarCustomer',
-  components: {
-  },
   data(){
     return{
       show: false,
