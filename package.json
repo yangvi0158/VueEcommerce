@@ -21,6 +21,7 @@
     "vee-validate": "^2.2.15",
     "vue": "^2.5.2",
     "vue-axios": "^2.1.5",
+    "vue-element-loading": "^2.0.2",
     "vue-i18n": "^8.15.0",
     "vue-loading-overlay": "^3.2.0",
     "vue-photo-zoom-pro": "^1.2.20",

@@ -5,8 +5,8 @@
     <loading 
       :active.sync="isLoading"
       color="#646159"
-      height="50"
-      width="50"
+      :height="loadingScale"
+      :width="loadingScale"
     ></loading>
     <!--商品列表-->
     <div class="customerRight">
@@ -123,6 +123,7 @@ export default {
       sortBy: "num",
       isReverse: false,
       isLoading: false,
+      loadingScale: 50,
       isFavorite: false,
       allFavorite: [],
       isAddCart: '',

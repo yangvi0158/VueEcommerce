@@ -5,8 +5,8 @@
         <loading 
           :active.sync="isLoading"
           color="#646159"
-          height="50"
-          width="50"
+          :height="loadingScale"
+          :width="loadingScale"
         ></loading>   
         
         <div class="adminMainContent-Top">
@@ -137,6 +137,7 @@ export default {
       isNew: false,
       isLoading: false,
       getPagination: {},
+      loadingScale: 50,
     }
   },
   methods:{

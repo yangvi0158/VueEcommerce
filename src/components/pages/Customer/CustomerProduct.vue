@@ -15,6 +15,7 @@
             </ul>
         </div>
         <div class="customerMainContent row">
+            <vue-element-loading :active="isDelay" color="#000000" background-color="#F0EEE9"/>
             <div class="col-md-4 col-sm-6 mb-5" v-for="item in sortdata" :key="item.id">
                 <div class="card" @click="getProduct(item.id)">
                     <i class="fas fa-heart heartPosition" 
@@ -101,12 +102,14 @@
 
 <script>
 import SidebarCustomer from '@/components/SidebarCustomer';
+import VueElementLoading from 'vue-element-loading';
 import $ from 'jquery';
 
 export default {
   name: 'CustomerProduct',
   components: {
     SidebarCustomer,
+    VueElementLoading
   },
   data(){
     return{
@@ -120,6 +123,7 @@ export default {
       showSortByul: false,
       sortBy: "num",
       isReverse: false,
+      isDelay: false,
       isLoading: false,
       isFavorite: false,
       allFavorite: [],
@@ -131,11 +135,11 @@ export default {
     getProducts(){
         const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/products/all`;
         const vm = this;
-        //vm.isLoading = true;
+        vm.isDelay = true;
         this.$http.get(api).then((res) => {
             vm.allProducts = res.data.products;
             vm.getPagination = res.data.pagination;
-            //vm.isLoading = false;
+            vm.isDelay = false;
             //console.log('拿取商品列表',res.data);
             //console.log('我是allproducts',vm.allProducts);
         });

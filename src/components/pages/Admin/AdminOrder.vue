@@ -5,8 +5,8 @@
         <loading 
           :active.sync="isLoading"
           color="#646159"
-          height="50"
-          width="50"
+          :height="loadingScale"
+          :width="loadingScale"
         ></loading> 
         <div class="adminMainContent-Top">
             <span class="adminBreadcrumbs">訂單列表</span>
@@ -59,6 +59,7 @@ export default {
       orders: [],
       getPagination: {},
       isLoading: false,
+      loadingScale: 50,
     }
   },
   filters: {

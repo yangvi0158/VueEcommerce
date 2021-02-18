@@ -5,8 +5,8 @@
         <loading 
           :active.sync="isLoading"
           color="#646159"
-          height="50"
-          width="50"
+          :height="loadingScale"
+          :width="loadingScale"
         ></loading>   
         <div class="adminMainContent-Top">
             <span class="adminBreadcrumbs">產品列表</span>
@@ -178,6 +178,8 @@ export default {
       fileUploading: false,
       pagination: {},
       getPagination: {},
+      loadingScale: 50,
+
     }
   },
   methods:{

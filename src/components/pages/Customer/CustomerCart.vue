@@ -5,8 +5,8 @@
       <loading 
         :active.sync="isLoading"
         color="#646159"
-        height="50"
-        width="50"
+        :height="loadingScale"
+        :width="loadingScale"
       ></loading>  
       <!--上方進度條-->
       <div class="customerCart_Top">
@@ -129,6 +129,7 @@ export default {
       cutImg: require("@/assets/img/cart/sub.png"),
       cartProducts: [],
       isLoading: false,
+      loadingScale: 50,
       tempProduct: {},
       coupon_code: '',
       couponAdd: false,

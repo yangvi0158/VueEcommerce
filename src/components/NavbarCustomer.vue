@@ -118,7 +118,9 @@ export default {
       cartImg: require("../assets/img/navbar/Cart_icon.png"),
       searchImg: require("../assets/img/navbar/Search_icon.png"),
       showSearch: false,
-      cartProducts: [],
+      cartProducts: {
+        carts: []
+      },
       searchKeyword: '',
       favProducts: [],
     }

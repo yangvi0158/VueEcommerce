@@ -5,6 +5,7 @@
     <div class="customerFav_Top">
       <p class="customerFav-Title">慾望清單</p>
       <p class="customerFav-subTitle">{{favProducts.length}} Items</p>
+      <vue-element-loading :active="isDelay" color="#000000" background-color="#F0EEE9"/>
       <p v-if="!favProducts[0]" class="emptyCart">咦，慾望清單沒有商品噢！</p>
     </div>
     <div class="customerFav-Main">
@@ -37,8 +38,12 @@
 </template>
 
 <script>
+import VueElementLoading from 'vue-element-loading';
 export default {
   name: 'CustomerFavorite',
+  components: {
+    VueElementLoading
+  },
   data(){
     return{
       crossImg: require("@/assets/img/other/cross_small_black.png"),
@@ -49,6 +54,7 @@ export default {
       product: {},
       newFavProducts: [],
       isLoading: false,
+      isDelay: false,
       isAdding: false,
       deleteItem: '',
     }
@@ -87,8 +93,10 @@ export default {
   },
   created(){
     const vm = this;
+    this.isDelay = true;
     vm.$bus.$on('updateFavorite:fav', (item)=>{
       this.favProducts = item;
+      this.isDelay = false;
     });
   }
 }

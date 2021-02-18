@@ -44,7 +44,13 @@ export default {
       this.$http.post(api, vm.user).then((res) => {
         //console.log(res.data);
         if(res.data.success){
+          const token = res.data.token;
+          const expired = res.data.expired;
+          console.log(token, expired);
+          document.cookie = `hexToken=${token};expires=${new Date(expired)};`;
           vm.$router.push('/admin');
+        }else{
+          alert('認證錯誤，請重新輸入')
         }
       });
     },
