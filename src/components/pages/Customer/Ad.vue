@@ -2,22 +2,22 @@
   <!--首頁廣告頁-->
   <div class="ad">
     <!--Top-->
-    <div class="adTop">
-        <div class="adTop_L">
-          <img class="adTop_L_Img" :src="adImg_1" data-aos="fade-right" data-aos-anchor="#adTop">
+    <div class="adUpper">
+        <div class="adUpper_L">
+          <img class="adUpper_L_Img" :src="adImg_1" data-aos="fade-right" data-aos-anchor="#adUpper">
         </div>
-        <div class="adTop_R">
-          <div class="adTop_R_Text" data-aos="fade-left" data-aos-anchor="#adTop">
-            <span class="adTop_Text">CHRISTMAS</span>
-            <span class="adTop_Text">CHRISTMAS</span>
-            <span class="adTop_Text">CHRISTMAS</span>
-            <span class="adTop_Text">CHRISTMAS</span>
+        <div class="adUpper_R">
+          <div class="adUpper_R_Text" data-aos="fade-left" data-aos-anchor="#adUpper">
+            <span class="adUpper_Text">CHRISTMAS</span>
+            <span class="adUpper_Text">CHRISTMAS</span>
+            <span class="adUpper_Text">CHRISTMAS</span>
+            <span class="adUpper_Text">CHRISTMAS</span>
           </div>
-          <div class="adTop_R_Rec">
-            <div class="adTop_Rec1" data-aos="zoom-in" data-aos-anchor="#adTop" data-aos-delay="200"></div>
-            <div class="adTop_RecGroup">
-              <div class="adTop_Rec2" data-aos="zoom-in" data-aos-anchor="#adTop" data-aos-delay="500"></div>
-              <div class="adTop_Rec3" data-aos="zoom-in" data-aos-anchor="#adTop" data-aos-delay="800"></div>
+          <div class="adUpper_R_Rec">
+            <div class="adUpper_Rec1" data-aos="zoom-in" data-aos-anchor="#adUpper" data-aos-delay="200"></div>
+            <div class="adUpper_RecGroup">
+              <div class="adUpper_Rec2" data-aos="zoom-in" data-aos-anchor="#adUpper" data-aos-delay="500"></div>
+              <div class="adUpper_Rec3" data-aos="zoom-in" data-aos-anchor="#adUpper" data-aos-delay="800"></div>
             </div>
           </div>
         </div>

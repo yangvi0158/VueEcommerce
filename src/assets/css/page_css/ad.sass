@@ -2,24 +2,24 @@
     width: 100%
     //border: $border
     +flexbox(center,center,column)
-    .adTop
+    .adUpper
         width: 100%
         //==border: $border
 
         +flexbox(space-between,none,row)
-        .adTop_L
+        .adUpper_L
             flex: 5
             //border: $border
             +flexbox(flex-start,flex-end,row)
-            .adTop_L_Img
+            .adUpper_L_Img
                 width: 80%
-        .adTop_R
+        .adUpper_R
             flex: 5
-            .adTop_R_Text
+            .adUpper_R_Text
                 z-index: 10
                 position: absolute
                 padding-top: 5%
-                .adTop_Text
+                .adUpper_Text
                     //border: $border
                     +coolFont
                     cursor: default
@@ -31,29 +31,29 @@
                     line-height: .7em
                     &:hover
                         color: black
-            .adTop_R_Rec
+            .adUpper_R_Rec
                 width: 100%
                 //border: $border
                 z-index: 1
-                .adTop_Rec1
+                .adUpper_Rec1
                     width: 65%
                     height: 0
                     padding-bottom: calc(65% - 150px)
                     background-color: $light-red
                     margin-top: 20%
                     margin-left: 15%
-                .adTop_RecGroup
+                .adUpper_RecGroup
                     margin-left: 15%
                     width: 65%
                     +flexbox(space-between,none,row)
                     //border: $border
                     padding-top: 10%
-                    .adTop_Rec2
+                    .adUpper_Rec2
                         width: 20%
                         height: 0
                         padding-bottom: 20%
                         background-color: $light-red
-                    .adTop_Rec3
+                    .adUpper_Rec3
                         width: 20%
                         height: 0
                         padding-bottom: 10%
@@ -152,10 +152,10 @@
 
 
 @media only screen and (min-width: 1480px) 
-    .adTop_Text
+    .adUpper_Text
         font-size: 5.5em !important
-    .adTop_R_Rec
-        .adTop_Rec1
+    .adUpper_R_Rec
+        .adUpper_Rec1
             width: 70% !important
             padding-bottom: calc(70% - 200px) !important
     
@@ -191,26 +191,26 @@
 
 
 @media screen and (max-width: 950px) 
-    .adTop
-        .adTop_L
-            .adTop_L_Img
+    .adUpper
+        .adUpper_L
+            .adUpper_L_Img
                 width: 90% !important
-        .adTop_R
-            .adTop_R_Text
+        .adUpper_R
+            .adUpper_R_Text
                 padding-top: 5% !important
-                .adTop_Text
+                .adUpper_Text
                     font-size: 3.5em !important
-            .adTop_R_Rec
-                .adTop_Rec1
+            .adUpper_R_Rec
+                .adUpper_Rec1
                     width: 80% !important
                     padding-bottom: calc(85% - 150px) !important
-                .adTop_RecGroup
+                .adUpper_RecGroup
                     padding-top: 10%
-                    .adTop_Rec2
+                    .adUpper_Rec2
                         width: 20%
                         height: 0
                         padding-bottom: 20%
-                    .adTop_Rec3
+                    .adUpper_Rec3
                         width: 20%
                         height: 0
                         padding-bottom: 10%
@@ -253,26 +253,26 @@
 
 
 @media screen and (max-width: 690px) 
-    .adTop
-        .adTop_L
-            .adTop_L_Img
+    .adUpper
+        .adUpper_L
+            .adUpper_L_Img
                 width: 90% !important
-        .adTop_R
-            .adTop_R_Text
+        .adUpper_R
+            .adUpper_R_Text
                 padding-top: 5% !important
-                .adTop_Text
+                .adUpper_Text
                     font-size: 2.5rem !important
-            .adTop_R_Rec
-                .adTop_Rec1
+            .adUpper_R_Rec
+                .adUpper_Rec1
                     width: 80% !important
                     padding-bottom: calc(85% - 150px) !important
-                .adTop_RecGroup
+                .adUpper_RecGroup
                     padding-top: 10%
-                    .adTop_Rec2
+                    .adUpper_Rec2
                         width: 20%
                         height: 0
                         padding-bottom: 20%
-                    .adTop_Rec3
+                    .adUpper_Rec3
                         width: 20%
                         height: 0
                         padding-bottom: 10%
@@ -312,22 +312,22 @@
 
 
 @media screen and (max-width: 500px) 
-    .adTop
-        .adTop_L
-            .adTop_L_Img
-        .adTop_R
-            .adTop_R_Text
+    .adUpper
+        .adUpper_L
+            .adUpper_L_Img
+        .adUpper_R
+            .adUpper_R_Text
                 //padding-top: 5% !important
-                .adTop_Text
+                .adUpper_Text
                     font-size: 1.5rem !important
-            .adTop_R_Rec
-                .adTop_Rec1
+            .adUpper_R_Rec
+                .adUpper_Rec1
                     width: 80% !important
                     padding-bottom: calc(80% - 100px) !important
-                .adTop_RecGroup
+                .adUpper_RecGroup
                     //padding-top: 10%
-                    .adTop_Rec2
-                    .adTop_Rec3
+                    .adUpper_Rec2
+                    .adUpper_Rec3
     .adCenter
         .adCenter_L
             .adCenter_Text
