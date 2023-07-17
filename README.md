@@ -1,6 +1,6 @@
-# E-Commerence Website (Vue.js)
-E-commerce and Simple CMS Practice Project with Vue.js and Restful API.
-> [DEMO Website](https://viboloveyou12.github.io/VueEcommerce/dist/#/) 👈👈
+# 🛒 E-Commerence Website
+E-commerce and Simple CMS Practice Project with `Vue.js` and `Restful API`.
+> See the 👉 [Website](https://viboloveyou12.github.io/VueEcommerce/dist/#/) 👈
 
 ## Tech Stack
 - Base on [Vue/CLI](https://cli.vuejs.org/)
@@ -10,6 +10,18 @@ E-commerce and Simple CMS Practice Project with Vue.js and Restful API.
 - Sass
 - Bootstrap 4
 - RWD
+
+## Development
+### Prerequisites
+Make sure you have Node.js and Npm installed in your local machine.
+
+> ⚠️ To ensure compatibility with `node-sass`, please utilize node@12 to run a local server.
+
+### Usage
+To start a development server:
+```
+npm run dev
+```
 
 ## Website Structure
 **Main Site**
