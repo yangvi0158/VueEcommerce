@@ -1,8 +1,19 @@
-# 🛒 E-Commerence Website
-E-commerce and Simple CMS Practice Project with `Vue.js` and `Restful API`.
-> See the 👉 [Website](https://viboloveyou12.github.io/VueEcommerce/dist/#/) 👈
+<h1 align="center">
+  🛒🛒🛒
+</h1>
+<h1 align="center">
+  E-Commerce Website
+</h1>
+<p align="center">
+    🛒  <a href="https://viboloveyou12.github.io/VueEcommerce/dist/#/" target="_blank">Let's Go Shopping!</a>    🛒
+</p>
+<p align="center">
+  E-commerce and CRUD CMS Practice Project built with <a href="https://vuejs.org/" target="_blank">Vue </a>
+</p>
 
-## Tech Stack
+<img width="1175" alt="e-commerce screenshot" src="https://github.com/viboloveyou12/VueEcommerce/blob/master/src/assets/img/readmeImg/playstuff_mockup.png?raw=true">
+
+## 🗃️ Tech Stack
 - Base on [Vue/CLI](https://cli.vuejs.org/)
 - Developing with [Javascript ES6](https://javascript.info/)
 - RESTFul API
@@ -11,7 +22,7 @@ E-commerce and Simple CMS Practice Project with `Vue.js` and `Restful API`.
 - Bootstrap 4
 - RWD
 
-## Development
+## 🛠 Development
 ### Prerequisites
 Make sure you have Node.js and Npm installed in your local machine.
 
@@ -23,7 +34,7 @@ To start a development server:
 npm run dev
 ```
 
-## Website Structure
+## 🪜 Website Structure
 **Main Site**
 * Landing
 * Product
@@ -40,7 +51,7 @@ npm run dev
 * Coupon Management (Creat, Delete, Rewrite)
 * Order Management (Read)
 
-## Dependencies
+## 📘 Dependencies
 * vue-axios
 * vee-validate
 * vue-loading-overlay
@@ -50,8 +61,7 @@ npm run dev
 * clipboard.js
 * Vue-photo-zoom-pro
 
-## Project Introduction
-![image](https://github.com/viboloveyou12/VueEcommerce/blob/master/src/assets/img/readmeImg/playstuff_mockup.png?raw=true)
+
 ### 【Landing Page】
 ![image](https://raw.githubusercontent.com/viboloveyou12/VueEcommerce/master/src/assets/img/readmeImg/%E9%A6%96%E9%A0%81.png)
 
