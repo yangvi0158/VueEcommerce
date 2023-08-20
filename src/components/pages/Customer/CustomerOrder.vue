@@ -12,26 +12,26 @@
     <div class="customerOrder_Top">
       <div class="customerCart-process">
         <div class="customerCart-process-circle"></div>
-        <p class="customerCart-process-title">① 購物車</p>
+        <p class="customerCart-process-title">① Cart</p>
       </div>
       <div class="customerCart-process">
         <div class="customerCart-process-circle" :class="{'orderStatus': !order.is_paid}"></div>
-        <p class="customerCart-process-title">② 訂單資訊確認</p>
+        <p class="customerCart-process-title">② Information Confirm</p>
       </div>
       <div class="customerCart-process">
         <div class="customerCart-process-circle" :class="{'orderStatus': order.is_paid}"></div>
-        <p class="customerCart-process-title">③ 付款完成</p>
+        <p class="customerCart-process-title">③ Payment</p>
       </div>
     </div>
-    <!--主要訂單資訊-->
+    <!--Main Order Info-->
     <div class="customerOrder-Main">
         <form class="customerOrder-form" @submit.prevent="payOrder">
             <table class="table table-borderless mb-5">
                 <thead>
                     <th></th>
-                    <th>品項</th>
-                    <th>數量</th>
-                    <th>單價</th>
+                    <th>Item</th>
+                    <th>Count</th>
+                    <th>Price</th>
                 </thead>
                 <tbody>
                     <tr class="customerOrder-border" v-for="item in order.products" :key="item.id">
@@ -43,12 +43,12 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td colspan="3" class="text-right">折扣後總計</td>
+                        <td colspan="3" class="text-right">Total</td>
                         <td >NT{{ Math.round(order.total)|currency }}</td>
                     </tr>
                 </tfoot>
             </table>
-            <p class="tableTitle mt-5">訂單資訊</p>
+            <p class="tableTitle mt-5">Order Information</p>
             <table class="table table-borderless mb-5">
                 <tbody>
                     <tr class="customerOrder-border">
@@ -56,22 +56,22 @@
                         <td>{{ order.user.email }}</td>
                     </tr>
                     <tr class="customerOrder-border">
-                        <th>姓名</th>
+                        <th>Name</th>
                         <td>{{ order.user.name }}</td>
                     </tr>
                     <tr class="customerOrder-border">
-                        <th>收件人電話</th>
+                        <th>Phone Number</th>
                         <td>{{ order.user.tel }}</td>
                     </tr>
                     <tr class="customerOrder-border">
-                        <th>收件人地址</th>
+                        <th>Address</th>
                         <td>{{ order.user.address }}</td>
                     </tr>
                     <tr class="customerOrder-border">
-                        <th>付款狀態</th>
+                        <th>Payment Status</th>
                         <td>
-                        <span v-if="!order.is_paid">尚未付款</span>
-                        <span v-else class="text-success">付款完成</span>
+                        <span v-if="!order.is_paid">Unpaid</span>
+                        <span v-else class="text-success">Paid</span>
                         </td>
                     </tr>
                     <tr v-show="order.is_paid">
@@ -83,7 +83,7 @@
             <p v-show="order.is_paid" class="payRemark">提醒您：付款後，從備貨到寄出商品為 3 個工作天。（不包含假日）</p>
       
             <div class="customerOrder-pay mb-5" v-if="!order.is_paid">
-                <button class="customerOrder-payBtn mb-5">前往付款</button>
+                <button class="customerOrder-payBtn mb-5">Purchase</button>
             </div>
             <div class="customerOrder-pay mb-5" v-else>
                 <router-link to="/product"><button class="customerOrder-payBtn mb-5">回首頁</button></router-link>

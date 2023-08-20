@@ -12,10 +12,8 @@
     -moz-box-sizing: border-box
     -webkit-box-sizing: border-box
 
-//border
 $border: solid 1px black
 
-//flexbox
 @mixin flexbox($jc,$ai,$fd:row)
     display: flex
     justify-content: $jc
@@ -23,7 +21,6 @@ $border: solid 1px black
     flex-direction: $fd
 
 
-//contentText
 @mixin contentText
     font-size: .8rem
     letter-spacing: .05rem
@@ -47,11 +44,11 @@ $border: solid 1px black
         filter: brightness(.8)
     &:focus
         outline: none
-//font
+
 @mixin coolFont
     font-family: 'Archivo Black'
 
-//a_default css
+
 @mixin a_css
     text-decoration: none
     list-style: none

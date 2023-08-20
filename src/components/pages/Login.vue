@@ -7,7 +7,7 @@
     </div>
     <div class="loginMain">
       <form @submit.prevent="signin">
-          <h1 class="formTitle">SIGN IN</h1>
+          <h1 class="formTitle">Sign In (CMS)</h1>
           <!--label for="inputEmail"></label-->
           <input type="email" id="inputEmail" class="loginInput" placeholder="EMAIL ADDRESS" autofocus v-model="user.username">
           <!--label for="inputPassword" class="sr-only"></label-->
@@ -17,8 +17,8 @@
               <input type="checkbox" value="remember-me"> REMEMBER ME
             </label>
           </div>
-          <button class="loginBtn" type="submit">登入</button>
-          <p class="loginText">PLAY STUFF @2019</p>
+          <button class="loginBtn" type="submit">Login</button>
+          <p class="loginText">PLAY STUFF @2023</p>
       </form>
     </div>
   </div>

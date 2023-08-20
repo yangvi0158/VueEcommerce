@@ -12,15 +12,15 @@
       <div class="customerCart_Top">
         <div class="customerCart-process">
           <div class="customerCart-process-circle" style="background-color: #646159"></div>
-          <p class="customerCart-process-title">① 購物車</p>
+          <p class="customerCart-process-title">① Cart</p>
         </div>
         <div class="customerCart-process">
           <div class="customerCart-process-circle"></div>
-          <p class="customerCart-process-title">② 訂單資訊確認</p>
+          <p class="customerCart-process-title">② Information Confirm</p>
         </div>
         <div class="customerCart-process">
           <div class="customerCart-process-circle"></div>
-          <p class="customerCart-process-title">③ 付款完成</p>
+          <p class="customerCart-process-title">③ Payment</p>
         </div>
       </div>
 
@@ -38,7 +38,7 @@
                 </div>
                 NT{{item.product.price|currency}}
                 <div class="customerCart-li-bottom">
-                  <span>數量: {{item.qty}}個</span>
+                  <span>Count: {{item.qty}}</span>
                   <div class="customerCart-li-total">NT{{item.total|currency}}</div>
                 </div>
               </div>
@@ -49,71 +49,71 @@
         <!--訂購資訊填寫-->
         <div class="customerCart-Right">
           <div class="customerCart-detail">
-            <p class="customerCart-title">購物車小計</p>
+            <p class="customerCart-title">Shopping Cart</p>
             <div class="customerCart-coupon" :class="{'cartOpacity': couponAdd}">
               <input type="text" class="customerCart-coupon-input"
-              placeholder="請輸入優惠碼"
+              placeholder="Please enter a coupon code"
               v-model="coupon_code"
               @keyup.enter="addCoupon">
-              <button class="customerCart-coupon-btn" @click="addCoupon">新增</button>
+              <button class="customerCart-coupon-btn" @click="addCoupon">Add</button>
             </div>
             <p v-show="couponAddSuccess === 'true'" class="couponStatus text-success">已套入優惠券</p>
             <p v-show="couponAddSuccess === 'false'" class="couponStatus text-muted">查無此優惠券</p>
             <div class="customerCart-total">
-              <div>總計</div>
+              <div>Total</div>
               <div>NT{{cartProducts.total|currency}}</div>
             </div>
             <div v-if="cartProducts.final_total !== cartProducts.total"
             class="customerCart-total text-success">
-              <div>折扣後總計</div>
+              <div>Total</div>
               <div>NT{{ Math.round( cartProducts.final_total ) |currency}}</div>
             </div>
           </div>
           <div class="customerCart-form">
-            <p class="customerCart-title">訂單資訊</p>
+            <p class="customerCart-title">Order Information</p>
             <form class="customerCart-formMain" @submit.prevent="createOrder">
               <div class="form-group">
                   <label for="useremail">Email<span class="text-danger">*</span></label>
                   <input type="email" class="form-control" name="email" id="useremail"
-                  placeholder="請輸入 Email" v-model="form.user.email" v-validate="'required|email'">
+                  placeholder="Email" v-model="form.user.email" v-validate="'required|email'">
                   <span class="text-danger" v-if="errors.has('email')">{{ errors.first('email') }}</span>
               </div>
 
               <div class="form-group">
-                  <label for="username">收件人姓名<span class="text-danger">*</span></label>
+                  <label for="username">Name<span class="text-danger">*</span></label>
                   <input type="text" class="form-control" name="name" id="username"
-                  placeholder="輸入姓名" v-model="form.user.name" v-validate="'required'">
-                  <span class="text-danger" v-if="errors.has('name')">姓名必須輸入</span>
+                  placeholder="Name" v-model="form.user.name" v-validate="'required'">
+                  <span class="text-danger" v-if="errors.has('name')">Name Required</span>
               </div>
 
               <div class="form-group">
-                  <label for="usertel">收件人電話<span class="text-danger">*</span></label>
+                  <label for="usertel">Phone Number<span class="text-danger">*</span></label>
                   <input type="tel" class="form-control" name="tel" id="usertel"
-                  placeholder="請輸入電話" v-model="form.user.tel" v-validate="'required|digits:10'">
+                  placeholder="Phone Number" v-model="form.user.tel" v-validate="'required|digits:10'">
                   <span class="text-danger" v-if="errors.has('tel')">
                       {{ errors.first('tel').replace(/tel/,'電話') }}
                   </span>
               </div>
 
               <div class="form-group">
-                  <label for="useraddress">收件人地址<span class="text-danger">*</span></label>
+                  <label for="useraddress">Address<span class="text-danger">*</span></label>
                   <input type="address" class="form-control" name="address" v-validate="'required'"
-                  id="useraddress" placeholder="請輸入地址" v-model="form.user.address">
-                  <span class="text-danger" v-if="errors.has('address')">地址必須輸入</span>
+                  id="useraddress" placeholder="Address" v-model="form.user.address">
+                  <span class="text-danger" v-if="errors.has('address')">Address Required</span>
               </div>
 
               <div class="form-group">
-              <label for="message">備註</label>
+              <label for="message">Note</label>
               <textarea name="message" id="message" class="form-control" 
               cols="30" rows="4" v-model="form.message"></textarea>
               </div>
 
-              <button class="customerCart-form-submit">送出訂單</button>
+              <button class="customerCart-form-submit">Check Out</button>
             </form>
           </div>
         </div>
       </div>
-      <p v-else class="emptyCart">您的購物車沒有商品</p>
+      <p v-else class="emptyCart">There is no item in cart.</p>
     </div>
 </template>
 

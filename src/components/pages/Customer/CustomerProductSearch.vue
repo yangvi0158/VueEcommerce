@@ -11,15 +11,15 @@
     <!--商品列表-->
     <div class="customerRight">
         <div class="customerMainContent-Top">
-            <span v-if="filteredProducts[0]">搜尋關於 "{{searchKeyword}}" 的結果</span>
-            <span v-else>查無關於 "{{searchKeyword}}" 的結果</span>
+            <span v-if="filteredProducts[0]">Results for "{{searchKeyword}}"</span>
+            <span v-else>0 results found for your search.</span>
             <button class="customerSortBy" @click.stop="showSortByul = !showSortByul">
               SORT BY
             </button>
             <ul class="customerSortBy_ul" :class="{'showClass':showSortByul}">
-              <li class="customerSortBy_li" @click="isReverse = false, sortBy = 'num'">最新推出</li>
-              <li class="customerSortBy_li" @click="isReverse = true, sortBy = 'price'">價格低至高</li>
-              <li class="customerSortBy_li" @click="isReverse = false, sortBy = 'price'">價格高至低</li>
+              <li class="customerSortBy_li" @click="isReverse = false, sortBy = 'num'">Latest</li>
+              <li class="customerSortBy_li" @click="isReverse = true, sortBy = 'price'">Price: lowest first</li>
+              <li class="customerSortBy_li" @click="isReverse = false, sortBy = 'price'">Price: highest first</li>
             </ul>
         </div>
         <div class="customerMainContent row">
@@ -78,8 +78,8 @@
                       <p class="productModal-price">NT{{product.price|currency}}</p>
                     </div>
                     <div class="productModal_Right_Center">
-                      <p class="productModal-ingredient">商品材料/成分：{{product.ingredient}}</p>
-                      <p class="productModal-size">商品規格：{{product.size}}</p>
+                      <p class="productModal-ingredient">Material: {{product.ingredient}}</p>
+                      <p class="productModal-size">Size：{{product.size}}</p>
                     </div>
                     <div class="productModal_Right_Bottom">
                       <div class="productModal-num">
@@ -89,7 +89,7 @@
                       </div>
                       <button class="productModal-addtoCart" @click="addtoCart(product.id, product.num)"
                       :disabled="isLoading" :class="{'productModal-addtoCart-disabled':isLoading}">
-                        <span v-if="isAddCart === product.id">已加入購物車&nbsp;</span>
+                        <span v-if="isAddCart === product.id">Added Successfully&nbsp;</span>
                         <span v-else>ADD TO CART&nbsp;</span>
                         <i  v-if="isLoading" class="fas fa-spinner fa-spin"></i>
                       </button>
@@ -158,7 +158,7 @@ export default {
             }
         });
     },
-    //加入購物車
+    //Add to cart
     addtoCart(id, qty=1){
         const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`;
         const vm = this;
@@ -171,7 +171,6 @@ export default {
             vm.isLoading = false;
             if(res.data.success){
               vm.isAddCart = res.data.data.product.id;
-              //console.log('加至購物車成功',res.data);
               //$('#productModal').modal('hide');
               this.$bus.$emit('update:cart');
             }

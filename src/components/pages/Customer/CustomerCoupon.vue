@@ -14,12 +14,12 @@
             <div class="couponMain_Rec greenRec"></div>
           </div>
           <p class="coupon_description">
-          PLAY STUFF 與您一同慶祝聖誕節！<br>
-          複製以下代碼，獲得優惠券，<br>
-          享全館不限金額「8折」優惠。<br>
+          Celebrate Christmas with PLAY STUFF!<br>
+          Copy the code below to get a discount coupon,<br>
+          Enjoy an 8% off  discount with no minimum spend.<br>
           </p>
           <div class="couponMain_Right_Bottom">
-            <span class="copy_description">點擊代碼</span>
+            <span class="copy_description">Copy Code</span>
             <div class="copy">
               <p class="copy_btn" id="Coupon_Code" 
               ref="copy" 
@@ -29,7 +29,7 @@
                 {{ couponCode }}
               </p>
               <span class="copied" v-if="!isCopied"></span>
-              <span class="copied" v-if="isCopied">已複製</span>
+              <span class="copied" v-if="isCopied">Copied!</span>
             </div>
           </div>
         </div>
@@ -56,16 +56,15 @@ export default {
     }
   },
   methods:{
-    //複製優惠碼
     CopyCouponCode(){
       let vm = this;
       let clipboard = vm.copyBtn;
       clipboard.on('success', function() {
-          console.log('複製成功');
+          console.log('Copied Successfully');
           vm.isCopied = true;
       });
       clipboard.on('error', function() {
-          console.log('複製失敗');
+          console.log('Copied Failed');
       });
     },
   },

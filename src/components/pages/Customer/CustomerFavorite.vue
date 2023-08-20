@@ -1,12 +1,12 @@
 <template>
-   <!--慾望清單-->
+   <!--Wishlist-->
   <div class="customerMain" style="flex-direction: column">
 
     <div class="customerFav_Top">
-      <p class="customerFav-Title">慾望清單</p>
+      <p class="customerFav-Title">Wish List</p>
       <p class="customerFav-subTitle">{{favProducts.length}} Items</p>
       <vue-element-loading :active="isDelay" color="#000000" background-color="#F0EEE9"/>
-      <p v-if="!favProducts[0]" class="emptyCart">咦，慾望清單沒有商品噢！</p>
+      <p v-if="!favProducts[0]" class="emptyCart">Oh, there is no item in wish list yet.</p>
     </div>
     <div class="customerFav-Main">
       <ul class="customerFav-Main-ul">
@@ -23,7 +23,7 @@
               <br>NT{{item.price|currency}}
               <div class="customerFav-Main-Btn">
                 <div v-if="item.is_enabled" class="customerFav-Main-addtoCart" @click="addtoCart(item.id, 1)">
-                  加入購物車
+                  Add to cart
                   <i  v-if="isAddCart === item.id" class="fas fa-spinner fa-spin"></i>
                 </div>
                 <div v-else class="customerFav-Main-outOfStock">目前缺貨中</div>
@@ -82,9 +82,7 @@ export default {
 	        qty,
         };
         this.$http.post(api, { data: cart }).then((res) => {
-            console.log('加至購物車',res.data);
             if(res.data.success){
-              console.log('加至購物車成功',res.data);
               vm.isAddCart = '';
               this.$bus.$emit('update:cart');
             }

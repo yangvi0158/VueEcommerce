@@ -1,5 +1,5 @@
 <template>
-    <!--產品列表-->  
+    <!--Product List-->  
     <div class="adminMainContent">
         <!--loading-->
         <loading 
@@ -9,18 +9,18 @@
           :width="loadingScale"
         ></loading>   
         <div class="adminMainContent-Top">
-            <span class="adminBreadcrumbs">產品列表</span>
-            <button class="adminBtn" @click="openModal(true)">建立新商品</button>
+            <span class="adminBreadcrumbs">Product List</span>
+            <button class="adminBtn" @click="openModal(true)">Create Product</button>
         </div>
         <table class="tableClass">
             <thead class="tableHead">
                 <tr class="mt-4">
-                    <th class="tableHead_th mt-4" width="80">分類</th>
-                    <th class="tableHead_th">產品名稱</th>
-                    <th class="tableHead_th" width="80">原價</th>
-                    <th class="tableHead_th" width="80">售價</th>
-                    <th class="tableHead_th" width="80">是否啟用</th>
-                    <th class="tableHead_th" width="100">編輯</th>
+                    <th class="tableHead_th mt-4" width="100">Categories</th>
+                    <th class="tableHead_th">Product Name</th>
+                    <th class="tableHead_th" width="120">Original Price</th>
+                    <th class="tableHead_th" width="120">Price</th>
+                    <th class="tableHead_th" width="100">Enable</th>
+                    <th class="tableHead_th" width="150">Edit</th>
                 </tr>
             </thead>
             <tbody class="tableBody">
@@ -34,12 +34,12 @@
                         {{product.price|currency}}
                     </td>
                     <td>
-                        <span v-if="product.is_enabled" class="text-success">啟用</span>
-                        <span v-else>未啟用</span>
+                        <span v-if="product.is_enabled" class="text-success">Enabled</span>
+                        <span v-else>Disable</span>
                     </td>
                     <td>
-                        <button class="btn btn-outline-primary btn-sm" @click="openModal(false, product)">編輯</button>
-                        <button class="btn btn-outline-danger btn-sm" @click="openDeleteModal(product)">刪除</button>
+                        <button class="btn btn-outline-primary btn-sm" @click="openModal(false, product)">Edit</button>
+                        <button class="btn btn-outline-danger btn-sm" @click="openDeleteModal(product)">Delete</button>
                     </td>
 
                 </tr>

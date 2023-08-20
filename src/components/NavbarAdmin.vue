@@ -3,10 +3,10 @@
     <div class="nav">
       <div class="navLeft">
         <router-link to="/product/all">
-          <span class="navLeft_btn">購買商品</span>
+          <span class="navLeft_btn">Products</span>
         </router-link>
         <router-link to="/admin">
-          <span class="navLeft_btn">後台管理</span>
+          <span class="navLeft_btn">CMS</span>
         </router-link>
       </div>
       <div class="navCenter">

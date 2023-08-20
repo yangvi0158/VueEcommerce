@@ -1,52 +1,52 @@
 <template>
     <div class="allsideBar">
         <div class="sidebarCustomer bigSizeUse">
-            <span>優惠券</span>
+            <span>Coupons</span>
             <ul class="sidebar_ul">
                 <li class="sidebar_li">
                     <router-link to="/coupon">   
-                        歡慶聖誕優惠
+                        Christmas Sale
                     </router-link>
                 </li>
             </ul>
-            <span>特別企劃</span>
+            <span>Special Promotion</span>
             <ul class="sidebar_ul">
                 <li class="sidebar_li">
                     <router-link to="/product/christmas">   
-                        溫馨過聖誕
+                        Christmas Specials
                     </router-link>
                 </li>
                 <li class="sidebar_li">
                     <router-link to="/product/halloween">
-                        調皮萬聖節特輯
+                        Halloween Specials
                     </router-link>
                 </li>
             </ul>
-            <span>商品分類</span>
+            <span>Categories</span>
             <ul class="sidebar_ul">
                 <li class="sidebar_li">
                     <router-link to="/product/all">   
-                        全部
+                        All
                     </router-link>
                 </li>
                 <li class="sidebar_li">
-                    <router-link to="/product/groceries">
-                        雜貨
+                    <router-link to="/product/items">
+                        Items
                     </router-link>
                 </li>
                 <li class="sidebar_li">
                     <router-link to="/product/foods">
-                        食品
+                        Foods
                     </router-link>
                 </li>
                 <li class="sidebar_li">
                     <router-link to="/product/toys">
-                        玩具
+                        Toys
                     </router-link>
                 </li>
                 <li class="sidebar_li">
                     <router-link to="/product/decorations">
-                        裝飾
+                        Decorations
                     </router-link>
                 </li>
             </ul>
@@ -57,52 +57,52 @@
             </div>
             <transition name="ul">
                 <div class="sidebarCustomer" v-if="show">
-                    <span>優惠券</span>
+                    <span>Coupons</span>
                     <ul class="sidebar_ul">
                         <li class="sidebar_li">
                             <router-link to="/coupon">   
-                                歡慶聖誕優惠
+                                Christmas Sale
                             </router-link>
                         </li>
                     </ul>
-                    <span>特別企劃</span>
+                    <span>Special Promotion</span>
                     <ul class="sidebar_ul">
                         <li class="sidebar_li">
                             <router-link to="/product/christmas">   
-                                溫馨過聖誕
+                                Christmas Specials
                             </router-link>
                         </li>
                         <li class="sidebar_li">
                             <router-link to="/product/halloween">
-                                調皮萬聖節特輯
+                                Halloween Specials
                             </router-link>
                         </li>
                     </ul>
-                    <span>商品分類</span>
+                    <span>Categories</span>
                     <ul class="sidebar_ul">
                         <li class="sidebar_li">
                             <router-link to="/product/all">   
-                                全部
+                                All
                             </router-link>
                         </li>
                         <li class="sidebar_li">
-                            <router-link to="/product/groceries">
-                                雜貨
+                            <router-link to="/product/items">
+                                Items
                             </router-link>
                         </li>
                         <li class="sidebar_li">
                             <router-link to="/product/foods">
-                                食品
+                                Foods
                             </router-link>
                         </li>
                         <li class="sidebar_li">
                             <router-link to="/product/toys">
-                                玩具
+                                Toys
                             </router-link>
                         </li>
                         <li class="sidebar_li">
                             <router-link to="/product/decorations">
-                                裝飾
+                                Decorations
                             </router-link>
                         </li>
                     </ul>

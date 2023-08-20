@@ -1,13 +1,13 @@
 ｀<template>
   <div class="allnav">
-    <!--筆電尺寸用之導覽列-->
+    <!--Nav for PC-->
     <div class="nav navbigSize">
       <div class="navLeft">
         <router-link to="/product/all">
-          <span class="navLeft_btn" @click="sendtoProduct">購買商品</span>
+          <span class="navLeft_btn" @click="sendtoProduct">Products</span>
         </router-link>
         <router-link to="/admin">
-          <span class="navLeft_btn backend">後台管理</span>
+          <span class="navLeft_btn backend">CMS</span>
         </router-link>
       </div>
       <div class="navCenter">
@@ -51,16 +51,16 @@
       </div>
     </div> 
 
-    <!--手機尺寸用之導覽列-->
+    <!--Nav for mobile-->
     <div class="nav navSmallSize">
       <div class="navTop">
         <router-link to="/"><img class="navbarImg" :src="logoImg"></router-link>
         <div class="navLeft">
           <router-link to="/product/all">
-            <span class="nav_btn" @click="sendtoProduct">購買商品</span>
+            <span class="nav_btn" @click="sendtoProduct">Products</span>
           </router-link>
           <router-link to="/admin">
-            <span class="nav_btn backend">後台管理</span>
+            <span class="nav_btn backend">CMS</span>
           </router-link>
         </div>
       </div>
@@ -160,10 +160,9 @@ export default {
   created() {
     const vm = this;
     this.getCart();
-    //更新購物車
+    //Update Cart
     vm.$bus.$on('update:cart', () => {
       vm.getCart();
-      //console.log('目前購物車',vm.cartProducts);
     });
     //接收從product傳來的favorites
     vm.$bus.$on('updateFavtoNav', (item)=>{
@@ -182,7 +181,7 @@ export default {
         case 'Christmas':
         case 'Halloween':
         case 'All':
-        case 'Groceries':
+        case 'Items':
         case 'Foods':
         case 'Toys':
         case 'Decorations':

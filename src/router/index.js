@@ -98,8 +98,8 @@ export default new VueRouter({
                                     meta: { scroll: true },
                                 },
                                 {
-                                    path: 'groceries',
-                                    name: 'Groceries',
+                                    path: 'items',
+                                    name: 'Items',
                                     component: CustomerProduct,
                                     meta: { scroll: true },
                                 },

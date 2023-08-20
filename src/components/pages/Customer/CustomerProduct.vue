@@ -9,9 +9,9 @@
               SORT BY
             </button>
             <ul class="customerSortBy_ul" :class="{'showClass':showSortByul}">
-              <li class="customerSortBy_li" @click="isReverse = false, sortBy = 'num'">最新推出</li>
-              <li class="customerSortBy_li" @click="isReverse = true, sortBy = 'price'">價格低至高</li>
-              <li class="customerSortBy_li" @click="isReverse = false, sortBy = 'price'">價格高至低</li>
+              <li class="customerSortBy_li" @click="isReverse = false, sortBy = 'num'">Latest</li>
+              <li class="customerSortBy_li" @click="isReverse = true, sortBy = 'price'">Price: lowest first</li>
+              <li class="customerSortBy_li" @click="isReverse = false, sortBy = 'price'">Price: highest first</li>
             </ul>
         </div>
         <div class="customerMainContent row">
@@ -49,7 +49,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header modalHeader border-0">
-                      <p class="modal-title" id="exampleModalLabel" style="color: #F0EEE9;user-select: none;">{{product.title}}</p>
+                      <p class="modal-title" id="exampleModalLabel"></p>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <img :src="crossImg" style="width:30%">
                       </button>
@@ -71,8 +71,8 @@
                       <p class="productModal-price">NT{{product.price|currency}}</p>
                     </div>
                     <div class="productModal_Right_Center">
-                      <div class="productModal-ingredient">商品材料/成分：{{product.ingredient}}</div>
-                      <div class="productModal-size">商品規格：{{product.size}}</div>
+                      <div class="productModal-ingredient">Material: {{product.ingredient}}</div>
+                      <div class="productModal-size">Size: {{product.size}}</div>
                     </div>
                     <div class="productModal_Right_Bottom">
                       <div class="productModal-num">
@@ -82,7 +82,7 @@
                       </div>
                       <button class="productModal-addtoCart" @click="addtoCart(product.id, product.num)"
                       :disabled="isLoading" :class="{'productModal-addtoCart-disabled':isLoading}">
-                      <span v-if="isAddCart === product.id">已加入購物車&nbsp;</span>
+                      <span v-if="isAddCart === product.id">Added Successfully&nbsp;</span>
                       <span v-else>ADD TO CART&nbsp;</span>
                       <i  v-if="isLoading" class="fas fa-spinner fa-spin"></i>
                       </button>
@@ -158,7 +158,7 @@ export default {
             }
         });
     },
-    //加入購物車
+    //Add to cart
     addtoCart(id, qty=1){
         const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`;
         const vm = this;
@@ -171,7 +171,6 @@ export default {
             vm.isLoading = false;
             if(res.data.success){
               vm.isAddCart = res.data.data.product.id;
-              //console.log('加至購物車成功',res.data);
               //$('#productModal').modal('hide');
               this.$bus.$emit('update:cart');
             }
@@ -222,42 +221,42 @@ export default {
       let filtered = '';
       switch (this.$route.name) {
         case 'Christmas':
-          this.nowPage = '溫馨過聖誕';
+          this.nowPage = 'Christmas Specials';
           filtered = this.allProducts.filter((el) => {
             return el.unit === 'christmas';
           });
           return filtered;
         case 'Halloween':
-          this.nowPage = '調皮萬聖節特輯';
+          this.nowPage = 'Halloween Specials';
           filtered = this.allProducts.filter((el) => {
             return el.unit === 'halloween';
           });
           return filtered;
         case 'All':
-          this.nowPage = '全部商品';
+          this.nowPage = 'All Products';
           return product;
-        case 'Groceries':
-          this.nowPage = '雜貨';
+        case 'Items':
+          this.nowPage = 'Items';
           filtered = this.allProducts.filter((el) => {
-            return el.category === '雜貨';
+            return el.category === 'Item';
           });
           return filtered;
         case 'Foods':
-          this.nowPage = '食品';
+          this.nowPage = 'Foods';
           filtered = this.allProducts.filter((el) => {
-            return el.category === '食品';
+            return el.category === 'Food';
           });
           return filtered;
         case 'Toys':
-          this.nowPage = '玩具';
+          this.nowPage = 'Toys';
           filtered = this.allProducts.filter((el) => {
-            return el.category === '玩具';
+            return el.category === 'Toy';
           });
           return filtered;
         case 'Decorations':
-          this.nowPage = '裝飾';
+          this.nowPage = 'Decorations';
           filtered = this.allProducts.filter((el) => {
-            const result = el.category === '裝飾';
+            const result = el.category === 'Decoration';
             return result;
           });
           return filtered;
