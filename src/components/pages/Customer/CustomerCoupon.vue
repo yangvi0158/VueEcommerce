@@ -9,9 +9,7 @@
         </div>
         <div class="couponMain_Right">
           <div class="couponMain_Right_Top">
-            <div class="couponMain_Rec redRec"></div>
-            <p class="couponMain-Title">歡慶聖誕</p>
-            <div class="couponMain_Rec greenRec"></div>
+            <p class="couponMain-Title">Christmas Sale!</p>
           </div>
           <p class="coupon_description">
           Celebrate Christmas with PLAY STUFF!<br>
@@ -99,6 +97,7 @@ export default {
 .couponMain_Left img{
   height: 100%;
   opacity: .8;
+  max-width: 216px;
 }
 
 .couponMain_Right_Top,
@@ -122,32 +121,26 @@ export default {
   white-space: nowrap;
   font-size: 1.3rem;
   margin: 0;
-  letter-spacing: .4rem;
   display: block;
+  font-weight: 600;
 }
 .couponMain_Rec{
   width: 25%;
   height: 100%;
 }
-.redRec{
-  background-color: #F16D6D;
-}
-.greenRec{
-  background-color: #86AE5E;
-}
+
 .coupon_description{
-  letter-spacing: .15rem;
   font-size: .9rem;
   white-space: nowrap;
 
 }
 .couponMain_Right_Bottom{
   display: flex;
-  justify-content: space-between;
   align-items: baseline;
 }
 .copy_description{
-
+  margin-right: 20px;
+  white-space: nowrap;
 }
 .copy{
   width: 65%;
@@ -164,6 +157,7 @@ export default {
   padding: 5px 0;
   text-align: center;
   width: 100%;
+  min-width: 150px;
   opacity: .3;
   margin: 0;
 }
@@ -239,21 +233,15 @@ export default {
   white-space: nowrap;
   font-size: 1rem;
   margin: 0;
-  letter-spacing: .4rem;
   display: block;
+  font-weight: 600;
 }
 .couponMain_Rec{
   width: 20%;
   height: 20px;
 }
-.redRec{
-  background-color: #F16D6D;
-}
-.greenRec{
-  background-color: #86AE5E;
-}
+
 .coupon_description{
-  letter-spacing: .15rem;
   font-size: .7rem;
   white-space: nowrap;
 
@@ -264,7 +252,6 @@ export default {
   align-items: baseline;
 }
 .copy_description{
-  letter-spacing: .15rem;
   font-size: .7rem;
 }
 .copy{

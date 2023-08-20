@@ -77,17 +77,17 @@
                 outline: none !important
 
     .dropdown-flex
-        +flexbox(space-around,center,row)
+        display: flex
+        align-items: center
         border-bottom: $border
-        padding:  15px 10px 0px 0
+        padding:  10px;
         .item-img
             width: 60px
             height: auto
+            object-fit: contain
         .item-detail
             +contentText
-            //font-size: .3rem
-            //line-height:  1rem
-            //letter-spacing: .05rem
+            margin-bottom: 0
     .dropdown-bottom
         +flexbox(center,center,column)
         .dropdown-totalPrice
@@ -101,9 +101,6 @@
                 +coffeeBtn
                 padding: 10px 0
                 width: 100%
-                //font-size: .3rem
-                //line-height:  1rem
-                //letter-spacing: .05rem
                 margin-bottom: 20px
 
     .scrollable-menu 
@@ -146,6 +143,7 @@
 @media screen and (max-width: 500px) 
     .allnav
         +flexbox(center,center,row)
+        margin-top: 50px
         .navbigSize
             display: none !important
         .navSmallSize
@@ -177,9 +175,10 @@
 
 
         .dropdown-flex
-            +flexbox(space-around,center,row)
+            display: flex;
+            align-items: center
             border-bottom: $border
-            padding:  15px 10px 0px 0
+            padding:  10px
         .item-img
             width: 60px
             height: auto

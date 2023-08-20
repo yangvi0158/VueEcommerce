@@ -23,7 +23,6 @@ $border: solid 1px black
 
 @mixin contentText
     font-size: .8rem
-    letter-spacing: .05rem
     text-align: justify
 
 
@@ -67,17 +66,14 @@ $border: solid 1px black
 @mixin title
     font-size: 1.6rem
     font-weight: 600
-    letter-spacing: .5rem
 
 
 @mixin btnborder($textWidth,$letterspacing)
     width: $textWidth
-    //border: $border
     display: block
     text-align: center
     transition: .3s
     &:hover,&:active
-        letter-spacing: $letterspacing
         transition: .3s
         opacity: 1
     &:after,&:before

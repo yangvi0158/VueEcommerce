@@ -4,19 +4,15 @@
     .adminMain,.customerMain
         margin-top: 5%
         width: 80%
-        //border: $border
         +flexbox(center,flex-start,row)
         .sidebarAdmin,.sidebarCustomer
             flex: 2
-            //border: $border
-            //margin-top: 90px
             span
                 +contentText
                 font-weight: 600
             .sidebar_ul
                 margin-top: 10px
                 min-width: 120px
-                //border: $border
 
                 
                 .sidebar_li
@@ -35,24 +31,15 @@
         
 .customerRight
     width: 100%
-    //border: $border
 
 .smallSizeUse
     display: none
 
-//@media only screen and (min-width: 1480px) 
-	.nav
-        //border: $border
-
-//@media screen and (max-width: 950px) 
-
 @media screen and (max-width: 690px) 
 	.admin,.customer
     width: 100%
-    //border: $border
     .adminMain,.customerMain
         margin-top: 2% !important
-        //border: $border
         +flexbox(center,center,column)
         .sidebarAdmin,.sidebarCustomer
             min-width: 120px !important
@@ -74,12 +61,10 @@
         display: none
     
     .allsideBar
-        //border: $border 
         border-color: red
         width: 100%
     .smallSizeUse
         display: block
-        //border: $border
         +flexbox(center,center,column)
         width: 100%
         margin-bottom: 30px   
@@ -94,9 +79,3 @@
                 background-color: rgba(black,.1)
             img 
                 width: 30px
-
-
-
-
-
-//@media screen and (max-width: 500px) 

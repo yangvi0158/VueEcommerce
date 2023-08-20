@@ -1,29 +1,21 @@
 .modalHeader
     +contentText
-    letter-spacing: .4rem
     line-height: .8rem !important
-    //border: $border
     p
-        //border: $border
         height: 100%;
 
 .modal-body
     width: 100%
-    //border: $border
-    //border-color: green
     +flexbox(center,flex-start,row)
     +contentText
     padding: 3% 10%
     .modal_left
         flex: 2
-        //border: $border 
         margin-right: 5%
     .modal_right
         flex: 4
-        //border: $border
         .modal_row
             +flexbox(space-between,center,row)
-            //border: $border
             border-color: red
 
 
@@ -83,7 +75,6 @@ input:-webkit-autofill
             .productModal-title
                 font-weight: 600
                 font-size: 1.4rem
-                letter-spacing: .3rem
             .productModal-price
                 +contentText
         .productModal_Right_Center
@@ -146,7 +137,6 @@ input:-webkit-autofill
             .productModal-title
                 font-weight: 600
                 font-size: 1rem !important
-                letter-spacing: .2rem
             .productModal-price
                 +contentText
         .productModal_Right_Center

@@ -284,6 +284,11 @@ export default {
   position: absolute;
   right: 0;
   z-index: 100;
+  transition: .1s;
+}
+
+.heartPosition:hover{
+  opacity: .8;
 }
 
 .redheart{
