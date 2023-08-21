@@ -23,6 +23,15 @@
           id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <span class="navImg-span" id="dropdownMenuButton" data-toggle="dropdown">({{cartProducts.carts.length}})</span>
           <div class="dropdown-menu dropdown-menu-right scrollable-menu" aria-labelledby="dropdownMenuButton">
+            <div class="dropdown-top">
+              <div class="dropdown-totalPrice">
+                <span>Total</span>
+                <span>NT{{cartProducts.total|currency}}</span>
+              </div>
+              <router-link to="/cart">
+                <button class="dropdown-checkout">CHECKOUT</button>
+              </router-link>
+            </div>
             <ul>
               <li class="dropdown-item dropdown-flex" v-for="item in cartProducts.carts" href="#">
                 <img class="item-img" :src="item.product.imageUrl">
@@ -34,15 +43,6 @@
                 </p>
               </li>
             </ul>
-            <div class="dropdown-bottom">
-              <div class="dropdown-totalPrice">
-                <span>Total</span>
-                <span>NT{{cartProducts.total|currency}}</span>
-              </div>
-              <router-link to="/cart">
-                <button class="dropdown-checkout">CHECKOUT</button>
-              </router-link>
-            </div>
           </div>
         </div>
         <img class="navbarImg navbarImg_nomMargin" :src="searchImg" @click="showSearch = !showSearch">
@@ -75,6 +75,15 @@
             id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span class="navImg-span" id="dropdownMenuButton" data-toggle="dropdown">({{cartProducts.carts.length}})</span>
             <div class="dropdown-menu dropdown-menu-right scrollable-menu" aria-labelledby="dropdownMenuButton">
+              <div class="dropdown-top">
+                <div class="dropdown-totalPrice">
+                  <span>Total</span>
+                  <span>NT{{cartProducts.total|currency}}</span>
+                </div>
+                <router-link to="/cart">
+                  <button class="dropdown-checkout">CHECKOUT</button>
+                </router-link>
+              </div>
               <ul>
                 <li class="dropdown-item dropdown-flex" v-for="item in cartProducts.carts" href="#">
                   <img class="item-img" :src="item.product.imageUrl">
@@ -86,15 +95,6 @@
                   </p>
                 </li>
               </ul>
-              <div class="dropdown-bottom">
-                <div class="dropdown-totalPrice">
-                  <span>Total</span>
-                  <span>NT{{cartProducts.total|currency}}</span>
-                </div>
-                <router-link to="/cart">
-                  <button class="dropdown-checkout">CHECKOUT</button>
-                </router-link>
-              </div>
             </div>
           </div>
           <img class="navbarImg navbarImg_nomMargin" :src="searchImg" @click="showSearch = !showSearch">

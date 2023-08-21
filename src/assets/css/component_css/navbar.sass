@@ -76,10 +76,13 @@
                 width: 100px !important
                 outline: none !important
 
+    ul 
+        margin-bottom: 0
+    
     .dropdown-flex
         display: flex
         align-items: center
-        border-bottom: $border
+        border-top: $border
         padding:  10px;
         .item-img
             width: 60px
@@ -88,7 +91,7 @@
         .item-detail
             +contentText
             margin-bottom: 0
-    .dropdown-bottom
+    .dropdown-top
         +flexbox(center,center,column)
         .dropdown-totalPrice
             +flexbox(space-between,center,row)
@@ -177,14 +180,14 @@
         .dropdown-flex
             display: flex;
             align-items: center
-            border-bottom: $border
+            border-top: $border
             padding:  10px
         .item-img
             width: 60px
             height: auto
         .item-detail
             +contentText
-    .dropdown-bottom
+    .dropdown-top
         +flexbox(center,center,column)
         .dropdown-totalPrice
             +flexbox(space-between,center,row)
