@@ -2,12 +2,12 @@
   <div class="customerMain" @click="showSortByul = false">
     <SidebarCustomer/>
     <!--loading-->
-    <loading 
+    <!-- <loading 
       :active.sync="isLoading"
       color="#646159"
       :height="loadingScale"
       :width="loadingScale"
-    ></loading>
+    ></loading> -->
     <!--商品列表-->
     <div class="customerRight">
         <div class="customerMainContent-Top">
@@ -56,12 +56,15 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header modalHeader border-0">
-                      <p class="modal-title" id="exampleModalLabel" style="color: #F0EEE9;user-select: none;">{{product.title}}</p>
+                      <p class="modal-title" id="exampleModalLabel"></p>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <img :src="crossImg" style="width:30%">
                       </button>
                 </div>
-                <div class="productModal-body">
+                <div class="productModal-body" v-show="isLoadingData">
+                  <i class="fas fa-spinner fa-spin"></i>
+                </div>
+                <div class="productModal-body" v-show="!isLoadingData">
                   <div class="productModal_Left">
                     <div class="productModal_img">
                       <vue-photo-zoom-pro 
@@ -88,10 +91,9 @@
                         <img :src="addImg"  @click="countNum(2)">
                       </div>
                       <button class="productModal-addtoCart" @click="addtoCart(product.id, product.num)"
-                      :disabled="isLoading" :class="{'productModal-addtoCart-disabled':isLoading}">
-                        <span v-if="isAddCart === product.id">Added Successfully&nbsp;</span>
-                        <span v-else>ADD TO CART&nbsp;</span>
-                        <i  v-if="isLoading" class="fas fa-spinner fa-spin"></i>
+                      :disabled="isAddingItem" :class="{'productModal-addtoCart-disabled':isAddingItem}">
+                        <span>ADD TO CART&nbsp;</span>
+                        <i  v-if="isAddingItem" class="fas fa-spinner fa-spin"></i>
                       </button>
                     </div>
                   </div>
@@ -122,12 +124,12 @@ export default {
       showSortByul: false,
       sortBy: "num",
       isReverse: false,
-      isLoading: false,
+      isAddingItem: false,
       loadingScale: 50,
       isFavorite: false,
       allFavorite: [],
-      isAddCart: '',
       searchKeyword: '',
+      isLoadingData: false,
     }
   },
   methods:{
@@ -148,13 +150,15 @@ export default {
     getProduct(id){
         const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/product/${id}`;
         const vm = this;
+        vm.isLoadingData = true;
+        $('#productModal').modal('show');
         this.$http.get(api).then((res) => {
             vm.product = res.data.product;
             vm.product.num = 1;
             //console.log(res.data);
             //console.log('我是product',vm.product);
             if(res.data.success){
-              $('#productModal').modal('show');
+              vm.isLoadingData = false;
             }
         });
     },
@@ -162,16 +166,15 @@ export default {
     addtoCart(id, qty=1){
         const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`;
         const vm = this;
-        vm.isLoading = true;
+        vm.isAddingItem = true;
         const cart = {
 	        product_id: id,
 	        qty,
         };
         this.$http.post(api, { data: cart }).then((res) => {
-            vm.isLoading = false;
+            vm.isAddingItem = false;
             if(res.data.success){
-              vm.isAddCart = res.data.data.product.id;
-              //$('#productModal').modal('hide');
+              $('#productModal').modal('hide');
               this.$bus.$emit('update:cart');
             }
         });
