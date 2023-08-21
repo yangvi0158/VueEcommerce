@@ -9,9 +9,9 @@
       <form @submit.prevent="signin">
           <h1 class="formTitle">Sign In (CMS)</h1>
           <!--label for="inputEmail"></label-->
-          <input type="email" id="inputEmail" class="loginInput" placeholder="EMAIL ADDRESS" autofocus v-model="user.username">
+          <input type="email" id="inputEmail" class="loginInput" placeholder="EMAIL ADDRESS" autocomplete="off" v-model="user.username">
           <!--label for="inputPassword" class="sr-only"></label-->
-          <input type="password" id="inputPassword" class="loginInput" placeholder="PASSWORD" v-model="user.password">
+          <input type="password" id="inputPassword" class="loginInput" placeholder="PASSWORD" v-model="user.password" autocomplete="off">
           <div class="loginCheckbox">
             <label>
               <input type="checkbox" value="remember-me"> REMEMBER ME
@@ -42,7 +42,6 @@ export default {
       const api = `${process.env.APIPATH}/admin/signin`;
 		  const vm = this;
       this.$http.post(api, vm.user).then((res) => {
-        //console.log(res.data);
         if(res.data.success){
           const token = res.data.token;
           const expired = res.data.expired;
@@ -50,7 +49,7 @@ export default {
           document.cookie = `hexToken=${token};expires=${new Date(expired)};`;
           vm.$router.push('/admin');
         }else{
-          alert('認證錯誤，請重新輸入')
+          alert('Please try again later')
         }
       });
     },
