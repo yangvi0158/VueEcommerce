@@ -47,7 +47,7 @@
         </div>
         <img class="navbarImg navbarImg_nomMargin" :src="searchImg" @click="showSearch = !showSearch">
         <input type="text" class="search" placeholder="search" :class="{'searching': showSearch}" 
-        v-model="searchKeyword" @keyup.enter="goSearch">
+        v-model="searchKeyword" @keyup.enter="searchItem">
       </div>
     </div> 
 
@@ -99,7 +99,7 @@
           </div>
           <img class="navbarImg navbarImg_nomMargin" :src="searchImg" @click="showSearch = !showSearch">
           <input type="text" class="search" placeholder="search" :class="{'searching': showSearch}" 
-          v-model="searchKeyword" @keyup.enter="goSearch">
+          v-model="searchKeyword" @keyup.enter="searchItem">
         </div>
       </div>
     </div> 
@@ -134,15 +134,13 @@ export default {
             //console.log('getCarts!',res.data);
         });
     },
-    goSearch(){
+    searchItem(){
       const vm = this;
       vm.$router.push(`/products/${vm.searchKeyword}`);
-      //console.log('goSearch');
       vm.$bus.$emit('update:search',vm.searchKeyword);
       window.setTimeout(function(){
         vm.$bus.$emit('updateProductSearch:fav',vm.favProducts);
       }, 1000);
-      //console.log('vm.favProducts',vm.favProducts)
     },
     sendtoFavorite(){
       const vm = this;
@@ -190,12 +188,6 @@ export default {
     },
   },
   computed: {
-    // favoriteLength(){
-    //   if(this.favProducts){
-    //     return favProducts.length
-    //   }
-    //   return '';
-    // }
   }
 }
 </script>

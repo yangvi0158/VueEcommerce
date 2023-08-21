@@ -11,7 +11,7 @@
     <!--商品列表-->
     <div class="customerRight">
         <div class="customerMainContent-Top">
-            <span v-if="filteredProducts[0]">Results for "{{searchKeyword}}"</span>
+            <span v-if="filteredProducts.length">Results for "{{searchKeyword}}"</span>
             <span v-else>0 results found for your search.</span>
             <button class="customerSortBy" @click.stop="showSortByul = !showSortByul">
               SORT BY
@@ -221,10 +221,9 @@ export default {
     //根據搜尋顯示商品
     filteredProducts(){
       const vm = this;
-      const product = this.allProducts;
       let filtered = '';
       filtered = this.allProducts.filter((el) => {
-        return el.title.includes(vm.searchKeyword);
+        return el.title.toLowerCase().includes(vm.searchKeyword.toLowerCase());
       })
       return filtered;
     },
